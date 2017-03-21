@@ -1,0 +1,15 @@
+(function() {
+    'use strict';
+
+    angular.module('app', [
+        /* Shared modules */
+        'app.core',
+
+        /* Features */
+        'app.auth',
+        'app.helpers',
+        'app.brands',
+        'app.deals',
+        'app.users'
+    ]);
+})();

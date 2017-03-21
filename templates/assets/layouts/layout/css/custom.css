@@ -1,0 +1,35 @@
+/* here you can put your own css to customize and override the theme */
+
+.search-input input,
+.search-input input:focus {
+    background: transparent;
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.search-input input::-webkit-input-placeholder {
+    color: #fff !important;
+}
+
+.search-input input:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff !important;
+}
+
+.search-input input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff !important;
+}
+
+.search-input input:-ms-input-placeholder {
+    color: #fff !important;
+}
+
+.search-input .input-group-addon {
+    background: transparent;
+    border: 0px;
+    color: #fff;
+    cursor: pointer;
+    border-bottom: 1px solid #fff;
+}

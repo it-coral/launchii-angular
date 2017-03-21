@@ -1,0 +1,25 @@
+machine:
+  timezone:
+    America/Los_Angeles
+
+dependencies:
+  pre:
+    - npm install -g karma-cli bower
+    - bower install
+  cache_directories:
+    - ~/nvm
+
+test:
+  override:
+    - karma start --single-run
+
+deployment:
+  production:
+    branch: master
+    heroku:
+      appname: launchii-vendor
+  staging:
+    branch: staging
+    heroku:
+      appname: launchii-vendor-staging
+
