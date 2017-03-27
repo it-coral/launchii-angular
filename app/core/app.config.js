@@ -154,11 +154,13 @@
 
             if (angular.isDefined($rootScope.currentUser) && !$rootScope.currentUser.is_vendor) {
                 event.preventDefault();
+                ngProgressLite.done();
                 $rootScope.loginError = "You are not authorized to access vendor pages.";
+                AuthService.destroyAuthUser();
                 AuthService.removeUserStorage();
 
-                $state.go('auth');
-                ngProgressLite.done();
+                //$state.go('auth');
+
                 return false;
             }
         }
