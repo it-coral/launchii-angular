@@ -34,7 +34,7 @@
             //console.log(localStorage.getItem("content-type"));
             //console.log(config.headers["content-type"]);
             //config.headers = headers;
-            config.timeout = canceller.promise;
+            //config.timeout = canceller.promise;
 
             return config;
             /*
@@ -68,6 +68,12 @@
                 $rootScope.$broadcast('unauthorized');
 
                 canceller.resolve('Unauthorized');
+                //return rejection;
+            } else
+            if (rejection.status === 422 && angular.isDefined($rootScope.currentUser) && !$rootScope.currentUser.is_vendor) {
+                $rootScope.$broadcast('nonvendoraccess');
+                rejection.config.timeout = canceller.promise;
+                canceller.resolve('No permission to access resource.');
                 //return rejection;
             }
 

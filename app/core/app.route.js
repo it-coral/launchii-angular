@@ -55,7 +55,7 @@
                     controllerAs: "vm",
                     resolve: {
                         styleSheets: dashboardStyleSheets,
-                        userPrepService: userPrepService
+                        //userPrepService: userPrepService
                     }
                 },
                 //"nav": nav

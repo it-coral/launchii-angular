@@ -420,7 +420,7 @@ for(var g=0;g<d.length;g++)if(!a(d[g],f[g]))return!1;return!0}}this.encode=h(d(a
  * License: MIT
  */
 (function(global,factory){typeof exports==="object"&&typeof module!=="undefined"?module.exports=factory():typeof define==="function"&&define.amd?define(factory):global.satellizer=factory()})(this,function(){"use strict";var Config=function(){function Config(){this.baseUrl="/";this.loginUrl="/auth/login";this.signupUrl="/auth/signup";this.unlinkUrl="/auth/unlink/";this.tokenName="token";this.tokenPrefix="satellizer";this.tokenHeader="Authorization";this.tokenType="Bearer";this.storageType="localStorage";this.tokenRoot=null;this.withCredentials=false;this.providers={facebook:{name:"facebook",url:"/auth/facebook",authorizationEndpoint:"https://www.facebook.com/v2.5/dialog/oauth",redirectUri:window.location.origin+"/",requiredUrlParams:["display","scope"],scope:["email"],scopeDelimiter:",",display:"popup",oauthType:"2.0",popupOptions:{width:580,height:400}},google:{name:"google",url:"/auth/google",authorizationEndpoint:"https://accounts.google.com/o/oauth2/auth",redirectUri:window.location.origin,requiredUrlParams:["scope"],optionalUrlParams:["display","state"],scope:["profile","email"],scopePrefix:"openid",scopeDelimiter:" ",display:"popup",oauthType:"2.0",popupOptions:{width:452,height:633},state:function(){return encodeURIComponent(Math.random().toString(36).substr(2))}},github:{name:"github",url:"/auth/github",authorizationEndpoint:"https://github.com/login/oauth/authorize",redirectUri:window.location.origin,optionalUrlParams:["scope"],scope:["user:email"],scopeDelimiter:" ",oauthType:"2.0",popupOptions:{width:1020,height:618}},instagram:{name:"instagram",url:"/auth/instagram",authorizationEndpoint:"https://api.instagram.com/oauth/authorize",redirectUri:window.location.origin,requiredUrlParams:["scope"],scope:["basic"],scopeDelimiter:"+",oauthType:"2.0"},linkedin:{name:"linkedin",url:"/auth/linkedin",authorizationEndpoint:"https://www.linkedin.com/uas/oauth2/authorization",redirectUri:window.location.origin,requiredUrlParams:["state"],scope:["r_emailaddress"],scopeDelimiter:" ",state:"STATE",oauthType:"2.0",popupOptions:{width:527,height:582}},twitter:{name:"twitter",url:"/auth/twitter",authorizationEndpoint:"https://api.twitter.com/oauth/authenticate",redirectUri:window.location.origin,oauthType:"1.0",popupOptions:{width:495,height:645}},twitch:{name:"twitch",url:"/auth/twitch",authorizationEndpoint:"https://api.twitch.tv/kraken/oauth2/authorize",redirectUri:window.location.origin,requiredUrlParams:["scope"],scope:["user_read"],scopeDelimiter:" ",display:"popup",oauthType:"2.0",popupOptions:{width:500,height:560}},live:{name:"live",url:"/auth/live",authorizationEndpoint:"https://login.live.com/oauth20_authorize.srf",redirectUri:window.location.origin,requiredUrlParams:["display","scope"],scope:["wl.emails"],scopeDelimiter:" ",display:"popup",oauthType:"2.0",popupOptions:{width:500,height:560}},yahoo:{name:"yahoo",url:"/auth/yahoo",authorizationEndpoint:"https://api.login.yahoo.com/oauth2/request_auth",redirectUri:window.location.origin,scope:[],scopeDelimiter:",",oauthType:"2.0",popupOptions:{width:559,height:519}},bitbucket:{name:"bitbucket",url:"/auth/bitbucket",authorizationEndpoint:"https://bitbucket.org/site/oauth2/authorize",redirectUri:window.location.origin+"/",requiredUrlParams:["scope"],scope:["email"],scopeDelimiter:" ",oauthType:"2.0",popupOptions:{width:1028,height:529}},spotify:{name:"spotify",url:"/auth/spotify",authorizationEndpoint:"https://accounts.spotify.com/authorize",redirectUri:window.location.origin,optionalUrlParams:["state"],requiredUrlParams:["scope"],scope:["user-read-email"],scopePrefix:"",scopeDelimiter:",",oauthType:"2.0",popupOptions:{width:500,height:530},state:function(){return encodeURIComponent(Math.random().toString(36).substr(2))}}};this.httpInterceptor=function(){return true}}Object.defineProperty(Config,"getConstant",{get:function(){return new Config},enumerable:true,configurable:true});return Config}();var AuthProvider=function(){function AuthProvider(SatellizerConfig){this.SatellizerConfig=SatellizerConfig}Object.defineProperty(AuthProvider.prototype,"baseUrl",{get:function(){return this.SatellizerConfig.baseUrl},set:function(value){this.SatellizerConfig.baseUrl=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"loginUrl",{get:function(){return this.SatellizerConfig.loginUrl},set:function(value){this.SatellizerConfig.loginUrl=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"signupUrl",{get:function(){return this.SatellizerConfig.signupUrl},set:function(value){this.SatellizerConfig.signupUrl=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"unlinkUrl",{get:function(){return this.SatellizerConfig.unlinkUrl},set:function(value){this.SatellizerConfig.unlinkUrl=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"tokenRoot",{get:function(){return this.SatellizerConfig.tokenRoot},set:function(value){this.SatellizerConfig.tokenRoot=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"tokenName",{get:function(){return this.SatellizerConfig.tokenName},set:function(value){this.SatellizerConfig.tokenName=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"tokenPrefix",{get:function(){return this.SatellizerConfig.tokenPrefix},set:function(value){this.SatellizerConfig.tokenPrefix=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"tokenHeader",{get:function(){return this.SatellizerConfig.tokenHeader},set:function(value){this.SatellizerConfig.tokenHeader=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"tokenType",{get:function(){return this.SatellizerConfig.tokenType},set:function(value){this.SatellizerConfig.tokenType=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"withCredentials",{get:function(){return this.SatellizerConfig.withCredentials},set:function(value){this.SatellizerConfig.withCredentials=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"storageType",{get:function(){return this.SatellizerConfig.storageType},set:function(value){this.SatellizerConfig.storageType=value},enumerable:true,configurable:true});Object.defineProperty(AuthProvider.prototype,"httpInterceptor",{get:function(){return this.SatellizerConfig.httpInterceptor},set:function(value){if(typeof value==="function"){this.SatellizerConfig.httpInterceptor=value}else{this.SatellizerConfig.httpInterceptor=function(){return value}}},enumerable:true,configurable:true});AuthProvider.prototype.facebook=function(options){angular.extend(this.SatellizerConfig.providers.facebook,options)};AuthProvider.prototype.google=function(options){angular.extend(this.SatellizerConfig.providers.google,options)};AuthProvider.prototype.github=function(options){angular.extend(this.SatellizerConfig.providers.github,options)};AuthProvider.prototype.instagram=function(options){angular.extend(this.SatellizerConfig.providers.instagram,options)};AuthProvider.prototype.linkedin=function(options){angular.extend(this.SatellizerConfig.providers.linkedin,options)};AuthProvider.prototype.twitter=function(options){angular.extend(this.SatellizerConfig.providers.twitter,options)};AuthProvider.prototype.twitch=function(options){angular.extend(this.SatellizerConfig.providers.twitch,options)};AuthProvider.prototype.live=function(options){angular.extend(this.SatellizerConfig.providers.live,options)};AuthProvider.prototype.yahoo=function(options){angular.extend(this.SatellizerConfig.providers.yahoo,options)};AuthProvider.prototype.bitbucket=function(options){angular.extend(this.SatellizerConfig.providers.bitbucket,options)};AuthProvider.prototype.spotify=function(options){angular.extend(this.SatellizerConfig.providers.spotify,options)};AuthProvider.prototype.oauth1=function(options){this.SatellizerConfig.providers[options.name]=angular.extend(options,{oauthType:"1.0"})};AuthProvider.prototype.oauth2=function(options){this.SatellizerConfig.providers[options.name]=angular.extend(options,{oauthType:"2.0"})};AuthProvider.prototype.$get=function(SatellizerShared,SatellizerLocal,SatellizerOAuth){return{login:function(user,options){return SatellizerLocal.login(user,options)},signup:function(user,options){return SatellizerLocal.signup(user,options)},logout:function(){return SatellizerShared.logout()},authenticate:function(name,data){return SatellizerOAuth.authenticate(name,data)},link:function(name,data){return SatellizerOAuth.authenticate(name,data)},unlink:function(name,options){return SatellizerOAuth.unlink(name,options)},isAuthenticated:function(){return SatellizerShared.isAuthenticated()},getPayload:function(){return SatellizerShared.getPayload()},getToken:function(){return SatellizerShared.getToken()},setToken:function(token){return SatellizerShared.setToken({access_token:token})},removeToken:function(){return SatellizerShared.removeToken()},setStorageType:function(type){return SatellizerShared.setStorageType(type)}}};AuthProvider.$inject=["SatellizerConfig"];return AuthProvider}();AuthProvider.prototype.$get.$inject=["SatellizerShared","SatellizerLocal","SatellizerOAuth"];function joinUrl(baseUrl,url){if(/^(?:[a-z]+:)?\/\//i.test(url)){return url}var joined=[baseUrl,url].join("/");var normalize=function(str){return str.replace(/[\/]+/g,"/").replace(/\/\?/g,"?").replace(/\/\#/g,"#").replace(/\:\//g,"://")};return normalize(joined)}function getFullUrlPath(location){var isHttps=location.protocol==="https:";return location.protocol+"//"+location.hostname+":"+(location.port||(isHttps?"443":"80"))+(/^\//.test(location.pathname)?location.pathname:"/"+location.pathname)}function parseQueryString(str){var obj={};var key;var value;angular.forEach((str||"").split("&"),function(keyValue){if(keyValue){value=keyValue.split("=");key=decodeURIComponent(value[0]);obj[key]=angular.isDefined(value[1])?decodeURIComponent(value[1]):true}});return obj}function decodeBase64(str){var buffer;if(typeof module!=="undefined"&&module.exports){try{buffer=require("buffer").Buffer}catch(err){}}var fromCharCode=String.fromCharCode;var re_btou=new RegExp(["[À-ß][-¿]","[à-ï][-¿]{2}","[ð-÷][-¿]{3}"].join("|"),"g");var cb_btou=function(cccc){switch(cccc.length){case 4:var cp=(7&cccc.charCodeAt(0))<<18|(63&cccc.charCodeAt(1))<<12|(63&cccc.charCodeAt(2))<<6|63&cccc.charCodeAt(3);var offset=cp-65536;return fromCharCode((offset>>>10)+55296)+fromCharCode((offset&1023)+56320);case 3:return fromCharCode((15&cccc.charCodeAt(0))<<12|(63&cccc.charCodeAt(1))<<6|63&cccc.charCodeAt(2));default:return fromCharCode((31&cccc.charCodeAt(0))<<6|63&cccc.charCodeAt(1))}};var btou=function(b){return b.replace(re_btou,cb_btou)};var _decode=buffer?function(a){return(a.constructor===buffer.constructor?a:new buffer(a,"base64")).toString()}:function(a){return btou(atob(a))};return _decode(String(str).replace(/[-_]/g,function(m0){return m0==="-"?"+":"/"}).replace(/[^A-Za-z0-9\+\/]/g,""))}var Shared=function(){function Shared($q,$window,SatellizerConfig,SatellizerStorage){this.$q=$q;this.$window=$window;this.SatellizerConfig=SatellizerConfig;this.SatellizerStorage=SatellizerStorage;var _a=this.SatellizerConfig,tokenName=_a.tokenName,tokenPrefix=_a.tokenPrefix;this.prefixedTokenName=tokenPrefix?[tokenPrefix,tokenName].join("_"):tokenName}Shared.prototype.getToken=function(){return this.SatellizerStorage.get(this.prefixedTokenName)};Shared.prototype.getPayload=function(){var token=this.SatellizerStorage.get(this.prefixedTokenName);if(token&&token.split(".").length===3){try{var base64Url=token.split(".")[1];var base64=base64Url.replace("-","+").replace("_","/");return JSON.parse(decodeBase64(base64))}catch(e){}}};Shared.prototype.setToken=function(response){var tokenRoot=this.SatellizerConfig.tokenRoot;var tokenName=this.SatellizerConfig.tokenName;var accessToken=response&&response.access_token;var token;if(accessToken){if(angular.isObject(accessToken)&&angular.isObject(accessToken.data)){response=accessToken}else if(angular.isString(accessToken)){token=accessToken}}if(!token&&response){var tokenRootData=tokenRoot&&tokenRoot.split(".").reduce(function(o,x){return o[x]},response.data);token=tokenRootData?tokenRootData[tokenName]:response.data&&response.data[tokenName]}if(token){this.SatellizerStorage.set(this.prefixedTokenName,token)}};Shared.prototype.removeToken=function(){this.SatellizerStorage.remove(this.prefixedTokenName)};Shared.prototype.isAuthenticated=function(){var token=this.SatellizerStorage.get(this.prefixedTokenName);if(token){if(token.split(".").length===3){try{var base64Url=token.split(".")[1];var base64=base64Url.replace("-","+").replace("_","/");var exp=JSON.parse(this.$window.atob(base64)).exp;if(typeof exp==="number"){return Math.round((new Date).getTime()/1e3)<exp}}catch(e){return true}}return true}return false};Shared.prototype.logout=function(){this.SatellizerStorage.remove(this.prefixedTokenName);return this.$q.when()};Shared.prototype.setStorageType=function(type){this.SatellizerConfig.storageType=type};Shared.$inject=["$q","$window","SatellizerConfig","SatellizerStorage"];return Shared}();var Local=function(){function Local($http,SatellizerConfig,SatellizerShared){this.$http=$http;this.SatellizerConfig=SatellizerConfig;this.SatellizerShared=SatellizerShared}Local.prototype.login=function(user,options){var _this=this;if(options===void 0){options={}}options.url=options.url?options.url:joinUrl(this.SatellizerConfig.baseUrl,this.SatellizerConfig.loginUrl);options.data=user||options.data;options.method=options.method||"POST";options.withCredentials=options.withCredentials||this.SatellizerConfig.withCredentials;return this.$http(options).then(function(response){_this.SatellizerShared.setToken(response);return response})};Local.prototype.signup=function(user,options){if(options===void 0){options={}}options.url=options.url?options.url:joinUrl(this.SatellizerConfig.baseUrl,this.SatellizerConfig.signupUrl);options.data=user||options.data;options.method=options.method||"POST";options.withCredentials=options.withCredentials||this.SatellizerConfig.withCredentials;return this.$http(options)};Local.$inject=["$http","SatellizerConfig","SatellizerShared"];return Local}();var Popup=function(){function Popup($interval,$window,$q){this.$interval=$interval;this.$window=$window;this.$q=$q;this.popup=null;this.defaults={redirectUri:null}}Popup.prototype.stringifyOptions=function(options){var parts=[];angular.forEach(options,function(value,key){parts.push(key+"="+value)});return parts.join(",")};Popup.prototype.open=function(url,name,popupOptions,redirectUri,dontPoll){var width=popupOptions.width||500;var height=popupOptions.height||500;var options=this.stringifyOptions({width:width,height:height,top:this.$window.screenY+(this.$window.outerHeight-height)/2.5,left:this.$window.screenX+(this.$window.outerWidth-width)/2});var popupName=this.$window["cordova"]||this.$window.navigator.userAgent.indexOf("CriOS")>-1?"_blank":name;this.popup=this.$window.open(url,popupName,options);if(this.popup&&this.popup.focus){this.popup.focus()}if(dontPoll){return}if(this.$window["cordova"]){return this.eventListener(redirectUri)}else{if(url==="about:blank"){this.popup.location=url}return this.polling(redirectUri)}};Popup.prototype.polling=function(redirectUri){var _this=this;return this.$q(function(resolve,reject){var redirectUriParser=document.createElement("a");redirectUriParser.href=redirectUri;var redirectUriPath=getFullUrlPath(redirectUriParser);var polling=_this.$interval(function(){if(!_this.popup||_this.popup.closed||_this.popup.closed===undefined){_this.$interval.cancel(polling);reject(new Error("The popup window was closed"))}try{var popupWindowPath=getFullUrlPath(_this.popup.location);if(popupWindowPath===redirectUriPath){if(_this.popup.location.search||_this.popup.location.hash){var query=parseQueryString(_this.popup.location.search.substring(1).replace(/\/$/,""));var hash=parseQueryString(_this.popup.location.hash.substring(1).replace(/[\/$]/,""));var params=angular.extend({},query,hash);if(params.error){reject(new Error(params.error))}else{resolve(params)}}else{reject(new Error("OAuth redirect has occurred but no query or hash parameters were found. "+"They were either not set during the redirect, or were removed—typically by a "+"routing library—before Satellizer could read it."))}_this.$interval.cancel(polling);_this.popup.close()}}catch(error){}},500)})};Popup.prototype.eventListener=function(redirectUri){var _this=this;return this.$q(function(resolve,reject){_this.popup.addEventListener("loadstart",function(event){if(event.url.indexOf(redirectUri)!==0){return}var parser=document.createElement("a");parser.href=event.url;if(parser.search||parser.hash){var query=parseQueryString(parser.search.substring(1).replace(/\/$/,""));var hash=parseQueryString(parser.hash.substring(1).replace(/[\/$]/,""));var params=angular.extend({},query,hash);if(params.error){reject(new Error(params.error))}else{resolve(params)}_this.popup.close()}});_this.popup.addEventListener("loaderror",function(){reject(new Error("Authorization failed"))});_this.popup.addEventListener("exit",function(){reject(new Error("The popup window was closed"))})})};Popup.$inject=["$interval","$window","$q"];return Popup}();var OAuth1=function(){function OAuth1($http,$window,SatellizerConfig,SatellizerPopup){this.$http=$http;this.$window=$window;this.SatellizerConfig=SatellizerConfig;this.SatellizerPopup=SatellizerPopup;this.defaults={name:null,url:null,authorizationEndpoint:null,scope:null,scopePrefix:null,scopeDelimiter:null,redirectUri:null,requiredUrlParams:null,defaultUrlParams:null,oauthType:"1.0",popupOptions:{width:null,height:null}}}OAuth1.prototype.init=function(options,userData){var _this=this;angular.extend(this.defaults,options);var name=options.name,popupOptions=options.popupOptions;var redirectUri=this.defaults.redirectUri;if(!this.$window["cordova"]){this.SatellizerPopup.open("about:blank",name,popupOptions,redirectUri,true)}return this.getRequestToken().then(function(response){return _this.openPopup(options,response).then(function(popupResponse){return _this.exchangeForToken(popupResponse,userData)})})};OAuth1.prototype.openPopup=function(options,response){var url=[options.authorizationEndpoint,this.buildQueryString(response.data)].join("?");var redirectUri=this.defaults.redirectUri;if(this.$window["cordova"]){return this.SatellizerPopup.open(url,options.name,options.popupOptions,redirectUri)}else{this.SatellizerPopup.popup.location=url;return this.SatellizerPopup.polling(redirectUri)}};OAuth1.prototype.getRequestToken=function(){var url=this.SatellizerConfig.baseUrl?joinUrl(this.SatellizerConfig.baseUrl,this.defaults.url):this.defaults.url;return this.$http.post(url,this.defaults)};OAuth1.prototype.exchangeForToken=function(oauthData,userData){var payload=angular.extend({},userData,oauthData);var exchangeForTokenUrl=this.SatellizerConfig.baseUrl?joinUrl(this.SatellizerConfig.baseUrl,this.defaults.url):this.defaults.url;return this.$http.post(exchangeForTokenUrl,payload,{withCredentials:this.SatellizerConfig.withCredentials})};OAuth1.prototype.buildQueryString=function(obj){var str=[];angular.forEach(obj,function(value,key){str.push(encodeURIComponent(key)+"="+encodeURIComponent(value))});return str.join("&")};OAuth1.$inject=["$http","$window","SatellizerConfig","SatellizerPopup"];return OAuth1}();var OAuth2=function(){function OAuth2($http,$window,$timeout,$q,SatellizerConfig,SatellizerPopup,SatellizerStorage){this.$http=$http;this.$window=$window;this.$timeout=$timeout;this.$q=$q;this.SatellizerConfig=SatellizerConfig;this.SatellizerPopup=SatellizerPopup;this.SatellizerStorage=SatellizerStorage;this.defaults={name:null,url:null,clientId:null,authorizationEndpoint:null,redirectUri:null,scope:null,scopePrefix:null,scopeDelimiter:null,state:null,requiredUrlParams:null,defaultUrlParams:["response_type","client_id","redirect_uri"],responseType:"code",responseParams:{code:"code",clientId:"clientId",redirectUri:"redirectUri"},oauthType:"2.0",popupOptions:{width:null,height:null}}}OAuth2.camelCase=function(name){return name.replace(/([\:\-\_]+(.))/g,function(_,separator,letter,offset){return offset?letter.toUpperCase():letter})};OAuth2.prototype.init=function(options,userData){var _this=this;return this.$q(function(resolve,reject){angular.extend(_this.defaults,options);var stateName=_this.defaults.name+"_state";var _a=_this.defaults,name=_a.name,state=_a.state,popupOptions=_a.popupOptions,redirectUri=_a.redirectUri,responseType=_a.responseType;if(typeof state==="function"){_this.SatellizerStorage.set(stateName,state())}else if(typeof state==="string"){_this.SatellizerStorage.set(stateName,state)}var url=[_this.defaults.authorizationEndpoint,_this.buildQueryString()].join("?");_this.SatellizerPopup.open(url,name,popupOptions,redirectUri).then(function(oauth){if(responseType==="token"||!url){return resolve(oauth)}if(oauth.state&&oauth.state!==_this.SatellizerStorage.get(stateName)){return reject(new Error("The value returned in the state parameter does not match the state value from your original "+"authorization code request."))}resolve(_this.exchangeForToken(oauth,userData))}).catch(function(error){return reject(error)})})};OAuth2.prototype.exchangeForToken=function(oauthData,userData){var _this=this;var payload=angular.extend({},userData);angular.forEach(this.defaults.responseParams,function(value,key){switch(key){case"code":payload[value]=oauthData.code;break;case"clientId":payload[value]=_this.defaults.clientId;break;case"redirectUri":payload[value]=_this.defaults.redirectUri;break;default:payload[value]=oauthData[key]}});if(oauthData.state){payload.state=oauthData.state}var exchangeForTokenUrl=this.SatellizerConfig.baseUrl?joinUrl(this.SatellizerConfig.baseUrl,this.defaults.url):this.defaults.url;return this.$http.post(exchangeForTokenUrl,payload,{withCredentials:this.SatellizerConfig.withCredentials})};OAuth2.prototype.buildQueryString=function(){var _this=this;var keyValuePairs=[];var urlParamsCategories=["defaultUrlParams","requiredUrlParams","optionalUrlParams"];angular.forEach(urlParamsCategories,function(paramsCategory){angular.forEach(_this.defaults[paramsCategory],function(paramName){var camelizedName=OAuth2.camelCase(paramName);var paramValue=angular.isFunction(_this.defaults[paramName])?_this.defaults[paramName]():_this.defaults[camelizedName];if(paramName==="redirect_uri"&&!paramValue){return}if(paramName==="state"){var stateName=_this.defaults.name+"_state";paramValue=encodeURIComponent(_this.SatellizerStorage.get(stateName))}if(paramName==="scope"&&Array.isArray(paramValue)){paramValue=paramValue.join(_this.defaults.scopeDelimiter);if(_this.defaults.scopePrefix){paramValue=[_this.defaults.scopePrefix,paramValue].join(_this.defaults.scopeDelimiter)}}keyValuePairs.push([paramName,paramValue])})});return keyValuePairs.map(function(pair){return pair.join("=")}).join("&")};OAuth2.$inject=["$http","$window","$timeout","$q","SatellizerConfig","SatellizerPopup","SatellizerStorage"];return OAuth2}();var OAuth=function(){function OAuth($http,$window,$timeout,$q,SatellizerConfig,SatellizerPopup,SatellizerStorage,SatellizerShared,SatellizerOAuth1,SatellizerOAuth2){this.$http=$http;this.$window=$window;this.$timeout=$timeout;this.$q=$q;this.SatellizerConfig=SatellizerConfig;this.SatellizerPopup=SatellizerPopup;this.SatellizerStorage=SatellizerStorage;this.SatellizerShared=SatellizerShared;this.SatellizerOAuth1=SatellizerOAuth1;this.SatellizerOAuth2=SatellizerOAuth2}OAuth.prototype.authenticate=function(name,userData){var _this=this;return this.$q(function(resolve,reject){var provider=_this.SatellizerConfig.providers[name];var oauth=null;switch(provider.oauthType){case"1.0":oauth=new OAuth1(_this.$http,_this.$window,_this.SatellizerConfig,_this.SatellizerPopup);break;case"2.0":oauth=new OAuth2(_this.$http,_this.$window,_this.$timeout,_this.$q,_this.SatellizerConfig,_this.SatellizerPopup,_this.SatellizerStorage);break;default:return reject(new Error("Invalid OAuth Type"))}return oauth.init(provider,userData).then(function(response){if(provider.url){_this.SatellizerShared.setToken(response)}resolve(response)}).catch(function(error){reject(error)})})};OAuth.prototype.unlink=function(provider,httpOptions){if(httpOptions===void 0){httpOptions={}}httpOptions.url=httpOptions.url?httpOptions.url:joinUrl(this.SatellizerConfig.baseUrl,this.SatellizerConfig.unlinkUrl);httpOptions.data={provider:provider}||httpOptions.data;httpOptions.method=httpOptions.method||"POST";httpOptions.withCredentials=httpOptions.withCredentials||this.SatellizerConfig.withCredentials;return this.$http(httpOptions)};OAuth.$inject=["$http","$window","$timeout","$q","SatellizerConfig","SatellizerPopup","SatellizerStorage","SatellizerShared","SatellizerOAuth1","SatellizerOAuth2"];return OAuth}();var Storage=function(){function Storage($window,SatellizerConfig){this.$window=$window;this.SatellizerConfig=SatellizerConfig;this.memoryStore={}}Storage.prototype.get=function(key){try{return this.$window[this.SatellizerConfig.storageType].getItem(key)}catch(e){return this.memoryStore[key]}};Storage.prototype.set=function(key,value){try{this.$window[this.SatellizerConfig.storageType].setItem(key,value)}catch(e){this.memoryStore[key]=value}};Storage.prototype.remove=function(key){try{this.$window[this.SatellizerConfig.storageType].removeItem(key)}catch(e){delete this.memoryStore[key]}};Storage.$inject=["$window","SatellizerConfig"];return Storage}();var Interceptor=function(){function Interceptor(SatellizerConfig,SatellizerShared,SatellizerStorage){var _this=this;this.SatellizerConfig=SatellizerConfig;this.SatellizerShared=SatellizerShared;this.SatellizerStorage=SatellizerStorage;this.request=function(config){if(config["skipAuthorization"]){return config}if(_this.SatellizerShared.isAuthenticated()&&_this.SatellizerConfig.httpInterceptor()){var tokenName=_this.SatellizerConfig.tokenPrefix?[_this.SatellizerConfig.tokenPrefix,_this.SatellizerConfig.tokenName].join("_"):_this.SatellizerConfig.tokenName;var token=_this.SatellizerStorage.get(tokenName);if(_this.SatellizerConfig.tokenHeader&&_this.SatellizerConfig.tokenType){token=_this.SatellizerConfig.tokenType+" "+token}config.headers[_this.SatellizerConfig.tokenHeader]=token}return config}}Interceptor.Factory=function(SatellizerConfig,SatellizerShared,SatellizerStorage){return new Interceptor(SatellizerConfig,SatellizerShared,SatellizerStorage)};Interceptor.$inject=["SatellizerConfig","SatellizerShared","SatellizerStorage"];return Interceptor}();Interceptor.Factory.$inject=["SatellizerConfig","SatellizerShared","SatellizerStorage"];var HttpProviderConfig=function(){function HttpProviderConfig($httpProvider){this.$httpProvider=$httpProvider;$httpProvider.interceptors.push(Interceptor.Factory)}HttpProviderConfig.$inject=["$httpProvider"];return HttpProviderConfig}();angular.module("satellizer",[]).provider("$auth",["SatellizerConfig",function(SatellizerConfig){return new AuthProvider(SatellizerConfig)}]).constant("SatellizerConfig",Config.getConstant).service("SatellizerShared",Shared).service("SatellizerLocal",Local).service("SatellizerPopup",Popup).service("SatellizerOAuth",OAuth).service("SatellizerOAuth2",OAuth2).service("SatellizerOAuth1",OAuth1).service("SatellizerStorage",Storage).service("SatellizerInterceptor",Interceptor).config(["$httpProvider",function($httpProvider){return new HttpProviderConfig($httpProvider)}]);var ng1="satellizer";return ng1});
-!function(n,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(n.async=n.async||{})}(this,function(n){"use strict";function t(n,t,e){switch(e.length){case 0:return n.call(t);case 1:return n.call(t,e[0]);case 2:return n.call(t,e[0],e[1]);case 3:return n.call(t,e[0],e[1],e[2])}return n.apply(t,e)}function e(n,e,r){return e=rt(void 0===e?n.length-1:e,0),function(){for(var u=arguments,o=-1,i=rt(u.length-e,0),c=Array(i);++o<i;)c[o]=u[e+o];o=-1;for(var f=Array(e+1);++o<e;)f[o]=u[o];return f[e]=r(c),t(n,this,f)}}function r(n){return n}function u(n,t){return e(n,t,r)}function o(n){return u(function(t,e){var r=ut(function(e,r){var u=this;return n(t,function(n,t){n.apply(u,e.concat(t))},r)});return e.length?r.apply(this,e):r})}function i(n){var t=lt.call(n,pt),e=n[pt];try{n[pt]=void 0;var r=!0}catch(n){}var u=st.call(n);return r&&(t?n[pt]=e:delete n[pt]),u}function c(n){return yt.call(n)}function f(n){return null==n?void 0===n?dt:vt:mt&&mt in Object(n)?i(n):c(n)}function a(n){var t=typeof n;return null!=n&&("object"==t||"function"==t)}function l(n){if(!a(n))return!1;var t=f(n);return t==bt||t==jt||t==gt||t==St}function s(n){return"number"==typeof n&&n>-1&&n%1==0&&n<=kt}function p(n){return null!=n&&s(n.length)&&!l(n)}function h(){}function y(n){return function(){if(null!==n){var t=n;n=null,t.apply(this,arguments)}}}function v(n,t){for(var e=-1,r=Array(n);++e<n;)r[e]=t(e);return r}function d(n){return null!=n&&"object"==typeof n}function m(n){return d(n)&&f(n)==Et}function g(){return!1}function b(n,t){return t=null==t?Pt:t,!!t&&("number"==typeof n||qt.test(n))&&n>-1&&n%1==0&&n<t}function j(n){return d(n)&&s(n.length)&&!!le[f(n)]}function S(n){return function(t){return n(t)}}function k(n,t){var e=It(n),r=!e&&Ft(n),u=!e&&!r&&Vt(n),o=!e&&!r&&!u&&ge(n),i=e||r||u||o,c=i?v(n.length,String):[],f=c.length;for(var a in n)!t&&!je.call(n,a)||i&&("length"==a||u&&("offset"==a||"parent"==a)||o&&("buffer"==a||"byteLength"==a||"byteOffset"==a)||b(a,f))||c.push(a);return c}function w(n){var t=n&&n.constructor,e="function"==typeof t&&t.prototype||Se;return n===e}function O(n,t){return function(e){return n(t(e))}}function x(n){if(!w(n))return ke(n);var t=[];for(var e in Object(n))Oe.call(n,e)&&"constructor"!=e&&t.push(e);return t}function E(n){return p(n)?k(n):x(n)}function L(n){var t=-1,e=n.length;return function(){return++t<e?{value:n[t],key:t}:null}}function A(n){var t=-1;return function(){var e=n.next();return e.done?null:(t++,{value:e.value,key:t})}}function T(n){var t=E(n),e=-1,r=t.length;return function(){var u=t[++e];return e<r?{value:n[u],key:u}:null}}function F(n){if(p(n))return L(n);var t=xt(n);return t?A(t):T(n)}function I(n){return function(){if(null===n)throw new Error("Callback was already called.");var t=n;n=null,t.apply(this,arguments)}}function _(n){return function(t,e,r){function u(n,t){if(f-=1,n)c=!0,r(n);else{if(t===wt||c&&f<=0)return c=!0,r(null);o()}}function o(){for(;f<n&&!c;){var t=i();if(null===t)return c=!0,void(f<=0&&r(null));f+=1,e(t.value,t.key,I(u))}}if(r=y(r||h),n<=0||!t)return r(null);var i=F(t),c=!1,f=0;o()}}function B(n,t,e,r){_(t)(n,e,r)}function M(n,t){return function(e,r,u){return n(e,t,r,u)}}function U(n,t,e){function r(n,t){n?e(n):++o!==i&&t!==wt||e(null)}e=y(e||h);var u=0,o=0,i=n.length;for(0===i&&e(null);u<i;u++)t(n[u],u,I(r))}function z(n){return function(t,e,r){return n(Ee,t,e,r)}}function V(n,t,e,r){r=r||h,t=t||[];var u=[],o=0;n(t,function(n,t,r){var i=o++;e(n,function(n,t){u[i]=t,r(n)})},function(n){r(n,u)})}function P(n){return function(t,e,r,u){return n(_(e),t,r,u)}}function q(n){return ut(function(t,e){var r;try{r=n.apply(this,t)}catch(n){return e(n)}a(r)&&"function"==typeof r.then?r.then(function(n){e(null,n)},function(n){e(n.message?n:new Error(n))}):e(null,r)})}function D(n,t){for(var e=-1,r=null==n?0:n.length;++e<r&&t(n[e],e,n)!==!1;);return n}function R(n){return function(t,e,r){for(var u=-1,o=Object(t),i=r(t),c=i.length;c--;){var f=i[n?c:++u];if(e(o[f],f,o)===!1)break}return t}}function C(n,t){return n&&Be(n,t,E)}function $(n,t,e,r){for(var u=n.length,o=e+(r?1:-1);r?o--:++o<u;)if(t(n[o],o,n))return o;return-1}function W(n){return n!==n}function N(n,t,e){for(var r=e-1,u=n.length;++r<u;)if(n[r]===t)return r;return-1}function Q(n,t,e){return t===t?N(n,t,e):$(n,W,e)}function G(n,t){for(var e=-1,r=null==n?0:n.length,u=Array(r);++e<r;)u[e]=t(n[e],e,n);return u}function H(n){return"symbol"==typeof n||d(n)&&f(n)==Ue}function J(n){if("string"==typeof n)return n;if(It(n))return G(n,J)+"";if(H(n))return Pe?Pe.call(n):"";var t=n+"";return"0"==t&&1/n==-ze?"-0":t}function K(n,t,e){var r=-1,u=n.length;t<0&&(t=-t>u?0:u+t),e=e>u?u:e,e<0&&(e+=u),u=t>e?0:e-t>>>0,t>>>=0;for(var o=Array(u);++r<u;)o[r]=n[r+t];return o}function X(n,t,e){var r=n.length;return e=void 0===e?r:e,!t&&e>=r?n:K(n,t,e)}function Y(n,t){for(var e=n.length;e--&&Q(t,n[e],0)>-1;);return e}function Z(n,t){for(var e=-1,r=n.length;++e<r&&Q(t,n[e],0)>-1;);return e}function nn(n){return n.split("")}function tn(n){return Qe.test(n)}function en(n){return n.match(pr)||[]}function rn(n){return tn(n)?en(n):nn(n)}function un(n){return null==n?"":J(n)}function on(n,t,e){if(n=un(n),n&&(e||void 0===t))return n.replace(hr,"");if(!n||!(t=J(t)))return n;var r=rn(n),u=rn(t),o=Z(r,u),i=Y(r,u)+1;return X(r,o,i).join("")}function cn(n){return n=n.toString().replace(mr,""),n=n.match(yr)[2].replace(" ",""),n=n?n.split(vr):[],n=n.map(function(n){return on(n.replace(dr,""))})}function fn(n,t){var e={};C(n,function(n,t){function r(t,e){var r=G(u,function(n){return t[n]});r.push(e),n.apply(null,r)}var u;if(It(n))u=n.slice(0,-1),n=n[n.length-1],e[t]=u.concat(u.length>0?r:n);else if(1===n.length)e[t]=n;else{if(u=cn(n),0===n.length&&0===u.length)throw new Error("autoInject task functions require explicit parameters.");u.pop(),e[t]=u.concat(r)}}),Me(e,t)}function an(n){setTimeout(n,0)}function ln(n){return u(function(t,e){n(function(){t.apply(null,e)})})}function sn(){this.head=this.tail=null,this.length=0}function pn(n,t){n.length=1,n.head=n.tail=t}function hn(n,t,e){function r(n,t,e){if(null!=e&&"function"!=typeof e)throw new Error("task callback must be a function");if(a.started=!0,It(n)||(n=[n]),0===n.length&&a.idle())return jr(function(){a.drain()});for(var r=0,u=n.length;r<u;r++){var o={data:n[r],callback:e||h};t?a._tasks.unshift(o):a._tasks.push(o)}jr(a.process)}function o(n){return u(function(t){i-=1;for(var e=0,r=n.length;e<r;e++){var u=n[e],o=Q(c,u,0);o>=0&&c.splice(o),u.callback.apply(u,t),null!=t[0]&&a.error(t[0],u.data)}i<=a.concurrency-a.buffer&&a.unsaturated(),a.idle()&&a.drain(),a.process()})}if(null==t)t=1;else if(0===t)throw new Error("Concurrency must not be zero");var i=0,c=[],f=!1,a={_tasks:new sn,concurrency:t,payload:e,saturated:h,unsaturated:h,buffer:t/4,empty:h,drain:h,error:h,started:!1,paused:!1,push:function(n,t){r(n,!1,t)},kill:function(){a.drain=h,a._tasks.empty()},unshift:function(n,t){r(n,!0,t)},process:function(){if(!f){for(f=!0;!a.paused&&i<a.concurrency&&a._tasks.length;){var t=[],e=[],r=a._tasks.length;a.payload&&(r=Math.min(r,a.payload));for(var u=0;u<r;u++){var l=a._tasks.shift();t.push(l),e.push(l.data)}0===a._tasks.length&&a.empty(),i+=1,c.push(t[0]),i===a.concurrency&&a.saturated();var s=I(o(t));n(e,s)}f=!1}},length:function(){return a._tasks.length},running:function(){return i},workersList:function(){return c},idle:function(){return a._tasks.length+i===0},pause:function(){a.paused=!0},resume:function(){a.paused!==!1&&(a.paused=!1,jr(a.process))}};return a}function yn(n,t){return hn(n,1,t)}function vn(n,t,e,r){r=y(r||h),kr(n,function(n,r,u){e(t,n,function(n,e){t=e,u(n)})},function(n){r(n,t)})}function dn(n,t,e,r){var u=[];n(t,function(n,t,r){e(n,function(n,t){u=u.concat(t||[]),r(n)})},function(n){r(n,u)})}function mn(n){return function(t,e,r){return n(kr,t,e,r)}}function gn(n,t){return function(e,r,u,o){o=o||h;var i,c=!1;e(r,function(e,r,o){u(e,function(r,u){r?o(r):n(u)&&!i?(c=!0,i=t(!0,e),o(null,wt)):o()})},function(n){n?o(n):o(null,c?i:t(!1))})}}function bn(n,t){return t}function jn(n){return u(function(t,e){t.apply(null,e.concat(u(function(t,e){"object"==typeof console&&(t?console.error&&console.error(t):console[n]&&D(e,function(t){console[n](t)}))})))})}function Sn(n,t,e){function r(t,r){return t?e(t):r?void n(o):e(null)}e=I(e||h);var o=u(function(n,u){return n?e(n):(u.push(r),void t.apply(this,u))});r(null,!0)}function kn(n,t,e){e=I(e||h);var r=u(function(u,o){return u?e(u):t.apply(this,o)?n(r):void e.apply(null,[null].concat(o))});n(r)}function wn(n,t,e){kn(n,function(){return!t.apply(this,arguments)},e)}function On(n,t,e){function r(t){return t?e(t):void n(u)}function u(n,u){return n?e(n):u?void t(r):e(null)}e=I(e||h),n(u)}function xn(n){return function(t,e,r){return n(t,r)}}function En(n,t,e){Ee(n,xn(t),e)}function Ln(n,t,e,r){_(t)(n,xn(e),r)}function An(n){return ut(function(t,e){var r=!0;t.push(function(){var n=arguments;r?jr(function(){e.apply(null,n)}):e.apply(null,n)}),n.apply(this,t),r=!1})}function Tn(n){return!n}function Fn(n){return function(t){return null==t?void 0:t[n]}}function In(n,t,e,r){var u=new Array(t.length);n(t,function(n,t,r){e(n,function(n,e){u[t]=!!e,r(n)})},function(n){if(n)return r(n);for(var e=[],o=0;o<t.length;o++)u[o]&&e.push(t[o]);r(null,e)})}function _n(n,t,e,r){var u=[];n(t,function(n,t,r){e(n,function(e,o){e?r(e):(o&&u.push({index:t,value:n}),r())})},function(n){n?r(n):r(null,G(u.sort(function(n,t){return n.index-t.index}),Fn("value")))})}function Bn(n,t,e,r){var u=p(t)?In:_n;u(n,t,e,r||h)}function Mn(n,t){function e(n){return n?r(n):void u(e)}var r=I(t||h),u=An(n);e()}function Un(n,t,e,r){r=y(r||h);var u={};B(n,t,function(n,t,r){e(n,t,function(n,e){return n?r(n):(u[t]=e,void r())})},function(n){r(n,u)})}function zn(n,t){return t in n}function Vn(n,t){var e=Object.create(null),o=Object.create(null);t=t||r;var i=ut(function(r,i){var c=t.apply(null,r);zn(e,c)?jr(function(){i.apply(null,e[c])}):zn(o,c)?o[c].push(i):(o[c]=[i],n.apply(null,r.concat(u(function(n){e[c]=n;var t=o[c];delete o[c];for(var r=0,u=t.length;r<u;r++)t[r].apply(null,n)}))))});return i.memo=e,i.unmemoized=n,i}function Pn(n,t,e){e=e||h;var r=p(t)?[]:{};n(t,function(n,t,e){n(u(function(n,u){u.length<=1&&(u=u[0]),r[t]=u,e(n)}))},function(n){e(n,r)})}function qn(n,t){Pn(Ee,n,t)}function Dn(n,t,e){Pn(_(t),n,e)}function Rn(n,t){if(t=y(t||h),!It(n))return t(new TypeError("First argument to race must be an array of functions"));if(!n.length)return t();for(var e=0,r=n.length;e<r;e++)n[e](t)}function Cn(n,t,e,r){var u=Nr.call(n).reverse();vn(u,t,e,r)}function $n(n){return ut(function(t,e){return t.push(u(function(n,t){if(n)e(null,{error:n});else{var r=null;1===t.length?r=t[0]:t.length>1&&(r=t),e(null,{value:r})}})),n.apply(this,t)})}function Wn(n,t,e,r){Bn(n,t,function(n,t){e(n,function(n,e){t(n,!e)})},r)}function Nn(n){var t;return It(n)?t=G(n,$n):(t={},C(n,function(n,e){t[e]=$n.call(this,n)})),t}function Qn(n){return function(){return n}}function Gn(n,t,e){function r(n,t){if("object"==typeof t)n.times=+t.times||o,n.intervalFunc="function"==typeof t.interval?t.interval:Qn(+t.interval||i),n.errorFilter=t.errorFilter;else{if("number"!=typeof t&&"string"!=typeof t)throw new Error("Invalid arguments for async.retry");n.times=+t||o}}function u(){t(function(n){n&&f++<c.times&&("function"!=typeof c.errorFilter||c.errorFilter(n))?setTimeout(u,c.intervalFunc(f)):e.apply(null,arguments)})}var o=5,i=0,c={times:o,intervalFunc:Qn(i)};if(arguments.length<3&&"function"==typeof n?(e=t||h,t=n):(r(c,n),e=e||h),"function"!=typeof t)throw new Error("Invalid arguments for async.retry");var f=1;u()}function Hn(n,t){Pn(kr,n,t)}function Jn(n,t,e){function r(n,t){var e=n.criteria,r=t.criteria;return e<r?-1:e>r?1:0}Le(n,function(n,e){t(n,function(t,r){return t?e(t):void e(null,{value:n,criteria:r})})},function(n,t){return n?e(n):void e(null,G(t.sort(r),Fn("value")))})}function Kn(n,t,e){function r(){c||(o.apply(null,arguments),clearTimeout(i))}function u(){var t=n.name||"anonymous",r=new Error('Callback function "'+t+'" timed out.');r.code="ETIMEDOUT",e&&(r.info=e),c=!0,o(r)}var o,i,c=!1;return ut(function(e,c){o=c,i=setTimeout(u,t),n.apply(null,e.concat(r))})}function Xn(n,t,e,r){for(var u=-1,o=nu(Zr((t-n)/(e||1)),0),i=Array(o);o--;)i[r?o:++u]=n,n+=e;return i}function Yn(n,t,e,r){Te(Xn(0,n,1),t,e,r)}function Zn(n,t,e,r){3===arguments.length&&(r=e,e=t,t=It(n)?[]:{}),r=y(r||h),Ee(n,function(n,r,u){e(t,n,r,u)},function(n){r(n,t)})}function nt(n){return function(){return(n.unmemoized||n).apply(null,arguments)}}function tt(n,t,e){if(e=I(e||h),!n())return e(null);var r=u(function(u,o){return u?e(u):n()?t(r):void e.apply(null,[null].concat(o))});t(r)}function et(n,t,e){tt(function(){return!n.apply(this,arguments)},t,e)}var rt=Math.max,ut=function(n){return u(function(t){var e=t.pop();n.call(this,t,e)})},ot="object"==typeof global&&global&&global.Object===Object&&global,it="object"==typeof self&&self&&self.Object===Object&&self,ct=ot||it||Function("return this")(),ft=ct.Symbol,at=Object.prototype,lt=at.hasOwnProperty,st=at.toString,pt=ft?ft.toStringTag:void 0,ht=Object.prototype,yt=ht.toString,vt="[object Null]",dt="[object Undefined]",mt=ft?ft.toStringTag:void 0,gt="[object AsyncFunction]",bt="[object Function]",jt="[object GeneratorFunction]",St="[object Proxy]",kt=9007199254740991,wt={},Ot="function"==typeof Symbol&&Symbol.iterator,xt=function(n){return Ot&&n[Ot]&&n[Ot]()},Et="[object Arguments]",Lt=Object.prototype,At=Lt.hasOwnProperty,Tt=Lt.propertyIsEnumerable,Ft=m(function(){return arguments}())?m:function(n){return d(n)&&At.call(n,"callee")&&!Tt.call(n,"callee")},It=Array.isArray,_t="object"==typeof n&&n&&!n.nodeType&&n,Bt=_t&&"object"==typeof module&&module&&!module.nodeType&&module,Mt=Bt&&Bt.exports===_t,Ut=Mt?ct.Buffer:void 0,zt=Ut?Ut.isBuffer:void 0,Vt=zt||g,Pt=9007199254740991,qt=/^(?:0|[1-9]\d*)$/,Dt="[object Arguments]",Rt="[object Array]",Ct="[object Boolean]",$t="[object Date]",Wt="[object Error]",Nt="[object Function]",Qt="[object Map]",Gt="[object Number]",Ht="[object Object]",Jt="[object RegExp]",Kt="[object Set]",Xt="[object String]",Yt="[object WeakMap]",Zt="[object ArrayBuffer]",ne="[object DataView]",te="[object Float32Array]",ee="[object Float64Array]",re="[object Int8Array]",ue="[object Int16Array]",oe="[object Int32Array]",ie="[object Uint8Array]",ce="[object Uint8ClampedArray]",fe="[object Uint16Array]",ae="[object Uint32Array]",le={};le[te]=le[ee]=le[re]=le[ue]=le[oe]=le[ie]=le[ce]=le[fe]=le[ae]=!0,le[Dt]=le[Rt]=le[Zt]=le[Ct]=le[ne]=le[$t]=le[Wt]=le[Nt]=le[Qt]=le[Gt]=le[Ht]=le[Jt]=le[Kt]=le[Xt]=le[Yt]=!1;var se,pe="object"==typeof n&&n&&!n.nodeType&&n,he=pe&&"object"==typeof module&&module&&!module.nodeType&&module,ye=he&&he.exports===pe,ve=ye&&ot.process,de=function(){try{return ve&&ve.binding&&ve.binding("util")}catch(n){}}(),me=de&&de.isTypedArray,ge=me?S(me):j,be=Object.prototype,je=be.hasOwnProperty,Se=Object.prototype,ke=O(Object.keys,Object),we=Object.prototype,Oe=we.hasOwnProperty,xe=M(B,1/0),Ee=function(n,t,e){var r=p(n)?U:xe;r(n,t,e)},Le=z(V),Ae=o(Le),Te=P(V),Fe=M(Te,1),Ie=o(Fe),_e=u(function(n,t){return u(function(e){return n.apply(null,t.concat(e))})}),Be=R(),Me=function(n,t,e){function r(n,t){b.push(function(){f(n,t)})}function o(){if(0===b.length&&0===d)return e(null,v);for(;b.length&&d<t;){var n=b.shift();n()}}function i(n,t){var e=g[n];e||(e=g[n]=[]),e.push(t)}function c(n){var t=g[n]||[];D(t,function(n){n()}),o()}function f(n,t){if(!m){var r=I(u(function(t,r){if(d--,r.length<=1&&(r=r[0]),t){var u={};C(v,function(n,t){u[t]=n}),u[n]=r,m=!0,g=Object.create(null),e(t,u)}else v[n]=r,c(n)}));d++;var o=t[t.length-1];t.length>1?o(v,r):o(r)}}function a(){for(var n,t=0;j.length;)n=j.pop(),t++,D(l(n),function(n){0===--S[n]&&j.push(n)});if(t!==p)throw new Error("async.auto cannot execute tasks due to a recursive dependency")}function l(t){var e=[];return C(n,function(n,r){It(n)&&Q(n,t,0)>=0&&e.push(r)}),e}"function"==typeof t&&(e=t,t=null),e=y(e||h);var s=E(n),p=s.length;if(!p)return e(null);t||(t=p);var v={},d=0,m=!1,g=Object.create(null),b=[],j=[],S={};C(n,function(t,e){if(!It(t))return r(e,[t]),void j.push(e);var u=t.slice(0,t.length-1),o=u.length;return 0===o?(r(e,t),void j.push(e)):(S[e]=o,void D(u,function(c){if(!n[c])throw new Error("async.auto task `"+e+"` has a non-existent dependency `"+c+"` in "+u.join(", "));i(c,function(){o--,0===o&&r(e,t)})}))}),a(),o()},Ue="[object Symbol]",ze=1/0,Ve=ft?ft.prototype:void 0,Pe=Ve?Ve.toString:void 0,qe="\\ud800-\\udfff",De="\\u0300-\\u036f",Re="\\ufe20-\\ufe2f",Ce="\\u20d0-\\u20ff",$e=De+Re+Ce,We="\\ufe0e\\ufe0f",Ne="\\u200d",Qe=RegExp("["+Ne+qe+$e+We+"]"),Ge="\\ud800-\\udfff",He="\\u0300-\\u036f",Je="\\ufe20-\\ufe2f",Ke="\\u20d0-\\u20ff",Xe=He+Je+Ke,Ye="\\ufe0e\\ufe0f",Ze="["+Ge+"]",nr="["+Xe+"]",tr="\\ud83c[\\udffb-\\udfff]",er="(?:"+nr+"|"+tr+")",rr="[^"+Ge+"]",ur="(?:\\ud83c[\\udde6-\\uddff]){2}",or="[\\ud800-\\udbff][\\udc00-\\udfff]",ir="\\u200d",cr=er+"?",fr="["+Ye+"]?",ar="(?:"+ir+"(?:"+[rr,ur,or].join("|")+")"+fr+cr+")*",lr=fr+cr+ar,sr="(?:"+[rr+nr+"?",nr,ur,or,Ze].join("|")+")",pr=RegExp(tr+"(?="+tr+")|"+sr+lr,"g"),hr=/^\s+|\s+$/g,yr=/^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m,vr=/,/,dr=/(=.+)?(\s*)$/,mr=/((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm,gr="function"==typeof setImmediate&&setImmediate,br="object"==typeof process&&"function"==typeof process.nextTick;se=gr?setImmediate:br?process.nextTick:an;var jr=ln(se);sn.prototype.removeLink=function(n){return n.prev?n.prev.next=n.next:this.head=n.next,n.next?n.next.prev=n.prev:this.tail=n.prev,n.prev=n.next=null,this.length-=1,n},sn.prototype.empty=sn,sn.prototype.insertAfter=function(n,t){t.prev=n,t.next=n.next,n.next?n.next.prev=t:this.tail=t,n.next=t,this.length+=1},sn.prototype.insertBefore=function(n,t){t.prev=n.prev,t.next=n,n.prev?n.prev.next=t:this.head=t,n.prev=t,this.length+=1},sn.prototype.unshift=function(n){this.head?this.insertBefore(this.head,n):pn(this,n)},sn.prototype.push=function(n){this.tail?this.insertAfter(this.tail,n):pn(this,n)},sn.prototype.shift=function(){return this.head&&this.removeLink(this.head)},sn.prototype.pop=function(){return this.tail&&this.removeLink(this.tail)};var Sr,kr=M(B,1),wr=u(function(n){return u(function(t){var e=this,r=t[t.length-1];"function"==typeof r?t.pop():r=h,vn(n,t,function(n,t,r){t.apply(e,n.concat(u(function(n,t){r(n,t)})))},function(n,t){r.apply(e,[n].concat(t))})})}),Or=u(function(n){return wr.apply(null,n.reverse())}),xr=z(dn),Er=mn(dn),Lr=u(function(n){var t=[null].concat(n);return ut(function(n,e){return e.apply(this,t)})}),Ar=z(gn(r,bn)),Tr=P(gn(r,bn)),Fr=M(Tr,1),Ir=jn("dir"),_r=M(Ln,1),Br=z(gn(Tn,Tn)),Mr=P(gn(Tn,Tn)),Ur=M(Mr,1),zr=z(Bn),Vr=P(Bn),Pr=M(Vr,1),qr=jn("log"),Dr=M(Un,1/0),Rr=M(Un,1);Sr=br?process.nextTick:gr?setImmediate:an;var Cr=ln(Sr),$r=function(n,t){return hn(function(t,e){n(t[0],e)},t,1)},Wr=function(n,t){var e=$r(n,t);return e.push=function(n,t,r){if(null==r&&(r=h),"function"!=typeof r)throw new Error("task callback must be a function");if(e.started=!0,It(n)||(n=[n]),0===n.length)return jr(function(){e.drain()});t=t||0;for(var u=e._tasks.head;u&&t>=u.priority;)u=u.next;for(var o=0,i=n.length;o<i;o++){var c={data:n[o],priority:t,callback:r};u?e._tasks.insertBefore(u,c):e._tasks.push(c)}jr(e.process)},delete e.unshift,e},Nr=Array.prototype.slice,Qr=z(Wn),Gr=P(Wn),Hr=M(Gr,1),Jr=function(n,t){return t||(t=n,n=null),ut(function(e,r){function u(n){t.apply(null,e.concat(n))}n?Gn(n,u,r):Gn(u,r)})},Kr=z(gn(Boolean,r)),Xr=P(gn(Boolean,r)),Yr=M(Xr,1),Zr=Math.ceil,nu=Math.max,tu=M(Yn,1/0),eu=M(Yn,1),ru=function(n,t){function e(o){if(r===n.length)return t.apply(null,[null].concat(o));var i=I(u(function(n,r){return n?t.apply(null,[n].concat(r)):void e(r)}));o.push(i);var c=n[r++];c.apply(null,o)}if(t=y(t||h),!It(n))return t(new Error("First argument to waterfall must be an array of functions"));if(!n.length)return t();var r=0;e([])},uu={applyEach:Ae,applyEachSeries:Ie,apply:_e,asyncify:q,auto:Me,autoInject:fn,cargo:yn,compose:Or,concat:xr,concatSeries:Er,constant:Lr,detect:Ar,detectLimit:Tr,detectSeries:Fr,dir:Ir,doDuring:Sn,doUntil:wn,doWhilst:kn,during:On,each:En,eachLimit:Ln,eachOf:Ee,eachOfLimit:B,eachOfSeries:kr,eachSeries:_r,ensureAsync:An,every:Br,everyLimit:Mr,everySeries:Ur,filter:zr,filterLimit:Vr,filterSeries:Pr,forever:Mn,log:qr,map:Le,mapLimit:Te,mapSeries:Fe,mapValues:Dr,mapValuesLimit:Un,mapValuesSeries:Rr,memoize:Vn,nextTick:Cr,parallel:qn,parallelLimit:Dn,priorityQueue:Wr,queue:$r,race:Rn,reduce:vn,reduceRight:Cn,reflect:$n,reflectAll:Nn,reject:Qr,rejectLimit:Gr,rejectSeries:Hr,retry:Gn,retryable:Jr,seq:wr,series:Hn,setImmediate:jr,some:Kr,someLimit:Xr,someSeries:Yr,sortBy:Jn,timeout:Kn,times:tu,timesLimit:Yn,timesSeries:eu,transform:Zn,unmemoize:nt,until:et,waterfall:ru,whilst:tt,all:Br,any:Kr,forEach:En,forEachSeries:_r,forEachLimit:Ln,forEachOf:Ee,forEachOfSeries:kr,forEachOfLimit:B,inject:vn,foldl:vn,foldr:Cn,select:zr,selectLimit:Vr,selectSeries:Pr,wrapSync:q};n.default=uu,n.applyEach=Ae,n.applyEachSeries=Ie,n.apply=_e,n.asyncify=q,n.auto=Me,n.autoInject=fn,n.cargo=yn,n.compose=Or,n.concat=xr,n.concatSeries=Er,n.constant=Lr,n.detect=Ar,n.detectLimit=Tr,n.detectSeries=Fr,n.dir=Ir,n.doDuring=Sn,n.doUntil=wn,n.doWhilst=kn,n.during=On,n.each=En,n.eachLimit=Ln,n.eachOf=Ee,n.eachOfLimit=B,n.eachOfSeries=kr,n.eachSeries=_r,n.ensureAsync=An,n.every=Br,n.everyLimit=Mr,n.everySeries=Ur,n.filter=zr,n.filterLimit=Vr,n.filterSeries=Pr,n.forever=Mn,n.log=qr,n.map=Le,n.mapLimit=Te,n.mapSeries=Fe,n.mapValues=Dr,n.mapValuesLimit=Un,n.mapValuesSeries=Rr,n.memoize=Vn,n.nextTick=Cr,n.parallel=qn,n.parallelLimit=Dn,n.priorityQueue=Wr,n.queue=$r,n.race=Rn,n.reduce=vn,n.reduceRight=Cn,n.reflect=$n,n.reflectAll=Nn,n.reject=Qr,n.rejectLimit=Gr,n.rejectSeries=Hr,n.retry=Gn,n.retryable=Jr,n.seq=wr,n.series=Hn,n.setImmediate=jr,n.some=Kr,n.someLimit=Xr,n.someSeries=Yr,n.sortBy=Jn,n.timeout=Kn,n.times=tu,n.timesLimit=Yn,n.timesSeries=eu,n.transform=Zn,n.unmemoize=nt,n.until=et,n.waterfall=ru,n.whilst=tt,n.all=Br,n.allLimit=Mr,n.allSeries=Ur,n.any=Kr,n.anyLimit=Xr,n.anySeries=Yr,n.find=Ar,n.findLimit=Tr,n.findSeries=Fr,n.forEach=En,n.forEachSeries=_r,n.forEachLimit=Ln,n.forEachOf=Ee,n.forEachOfSeries=kr,n.forEachOfLimit=B,n.inject=vn,n.foldl=vn,n.foldr=Cn,n.select=zr,n.selectLimit=Vr,n.selectSeries=Pr,n.wrapSync=q,Object.defineProperty(n,"__esModule",{value:!0})});
+!function(n,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t(n.async=n.async||{})}(this,function(n){"use strict";function t(n,t,e){switch(e.length){case 0:return n.call(t);case 1:return n.call(t,e[0]);case 2:return n.call(t,e[0],e[1]);case 3:return n.call(t,e[0],e[1],e[2])}return n.apply(t,e)}function e(n,e,r){return e=rt(void 0===e?n.length-1:e,0),function(){for(var u=arguments,o=-1,i=rt(u.length-e,0),c=Array(i);++o<i;)c[o]=u[e+o];o=-1;for(var f=Array(e+1);++o<e;)f[o]=u[o];return f[e]=r(c),t(n,this,f)}}function r(n){return n}function u(n,t){return e(n,t,r)}function o(n){return u(function(t,e){var r=ut(function(e,r){var u=this;return n(t,function(n,t){n.apply(u,e.concat(t))},r)});return e.length?r.apply(this,e):r})}function i(n){var t=lt.call(n,pt),e=n[pt];try{n[pt]=void 0;var r=!0}catch(n){}var u=st.call(n);return r&&(t?n[pt]=e:delete n[pt]),u}function c(n){return yt.call(n)}function f(n){return null==n?void 0===n?dt:vt:(n=Object(n),mt&&mt in n?i(n):c(n))}function a(n){var t=typeof n;return null!=n&&("object"==t||"function"==t)}function l(n){if(!a(n))return!1;var t=f(n);return t==bt||t==jt||t==gt||t==St}function s(n){return"number"==typeof n&&n>-1&&n%1==0&&n<=kt}function p(n){return null!=n&&s(n.length)&&!l(n)}function h(){}function y(n){return function(){if(null!==n){var t=n;n=null,t.apply(this,arguments)}}}function v(n,t){for(var e=-1,r=Array(n);++e<n;)r[e]=t(e);return r}function d(n){return null!=n&&"object"==typeof n}function m(n){return d(n)&&f(n)==xt}function g(){return!1}function b(n,t){return t=null==t?Vt:t,!!t&&("number"==typeof n||qt.test(n))&&n>-1&&n%1==0&&n<t}function j(n){return d(n)&&s(n.length)&&!!le[f(n)]}function S(n){return function(t){return n(t)}}function k(n,t){var e=Ft(n),r=!e&&Bt(n),u=!e&&!r&&Pt(n),o=!e&&!r&&!u&&ge(n),i=e||r||u||o,c=i?v(n.length,String):[],f=c.length;for(var a in n)!t&&!je.call(n,a)||i&&("length"==a||u&&("offset"==a||"parent"==a)||o&&("buffer"==a||"byteLength"==a||"byteOffset"==a)||b(a,f))||c.push(a);return c}function O(n){var t=n&&n.constructor,e="function"==typeof t&&t.prototype||Se;return n===e}function w(n,t){return function(e){return n(t(e))}}function L(n){if(!O(n))return ke(n);var t=[];for(var e in Object(n))we.call(n,e)&&"constructor"!=e&&t.push(e);return t}function x(n){return p(n)?k(n):L(n)}function E(n){var t=-1,e=n.length;return function(){return++t<e?{value:n[t],key:t}:null}}function A(n){var t=-1;return function(){var e=n.next();return e.done?null:(t++,{value:e.value,key:t})}}function T(n){var t=x(n),e=-1,r=t.length;return function(){var u=t[++e];return e<r?{value:n[u],key:u}:null}}function B(n){if(p(n))return E(n);var t=Lt(n);return t?A(t):T(n)}function F(n){return function(){if(null===n)throw new Error("Callback was already called.");var t=n;n=null,t.apply(this,arguments)}}function I(n){return function(t,e,r){function u(n,t){if(f-=1,n)c=!0,r(n);else{if(t===Ot||c&&f<=0)return c=!0,r(null);o()}}function o(){for(;f<n&&!c;){var t=i();if(null===t)return c=!0,void(f<=0&&r(null));f+=1,e(t.value,t.key,F(u))}}if(r=y(r||h),n<=0||!t)return r(null);var i=B(t),c=!1,f=0;o()}}function _(n,t,e,r){I(t)(n,e,r)}function M(n,t){return function(e,r,u){return n(e,t,r,u)}}function U(n,t,e){function r(n,t){n?e(n):++o!==i&&t!==Ot||e(null)}e=y(e||h);var u=0,o=0,i=n.length;for(0===i&&e(null);u<i;u++)t(n[u],u,F(r))}function z(n){return function(t,e,r){return n(xe,t,e,r)}}function P(n,t,e,r){r=r||h,t=t||[];var u=[],o=0;n(t,function(n,t,r){var i=o++;e(n,function(n,t){u[i]=t,r(n)})},function(n){r(n,u)})}function V(n){return function(t,e,r,u){return n(I(e),t,r,u)}}function q(n){return ut(function(t,e){var r;try{r=n.apply(this,t)}catch(n){return e(n)}a(r)&&"function"==typeof r.then?r.then(function(n){e(null,n)},function(n){e(n.message?n:new Error(n))}):e(null,r)})}function D(n,t){for(var e=-1,r=null==n?0:n.length;++e<r&&t(n[e],e,n)!==!1;);return n}function R(n){return function(t,e,r){for(var u=-1,o=Object(t),i=r(t),c=i.length;c--;){var f=i[n?c:++u];if(e(o[f],f,o)===!1)break}return t}}function C(n,t){return n&&_e(n,t,x)}function $(n,t,e,r){for(var u=n.length,o=e+(r?1:-1);r?o--:++o<u;)if(t(n[o],o,n))return o;return-1}function W(n){return n!==n}function N(n,t,e){for(var r=e-1,u=n.length;++r<u;)if(n[r]===t)return r;return-1}function Q(n,t,e){return t===t?N(n,t,e):$(n,W,e)}function G(n,t){for(var e=-1,r=null==n?0:n.length,u=Array(r);++e<r;)u[e]=t(n[e],e,n);return u}function H(n){return"symbol"==typeof n||d(n)&&f(n)==Ue}function J(n){if("string"==typeof n)return n;if(Ft(n))return G(n,J)+"";if(H(n))return Ve?Ve.call(n):"";var t=n+"";return"0"==t&&1/n==-ze?"-0":t}function K(n,t,e){var r=-1,u=n.length;t<0&&(t=-t>u?0:u+t),e=e>u?u:e,e<0&&(e+=u),u=t>e?0:e-t>>>0,t>>>=0;for(var o=Array(u);++r<u;)o[r]=n[r+t];return o}function X(n,t,e){var r=n.length;return e=void 0===e?r:e,!t&&e>=r?n:K(n,t,e)}function Y(n,t){for(var e=n.length;e--&&Q(t,n[e],0)>-1;);return e}function Z(n,t){for(var e=-1,r=n.length;++e<r&&Q(t,n[e],0)>-1;);return e}function nn(n){return n.split("")}function tn(n){return We.test(n)}function en(n){return n.match(fr)||[]}function rn(n){return tn(n)?en(n):nn(n)}function un(n){return null==n?"":J(n)}function on(n,t,e){if(n=un(n),n&&(e||void 0===t))return n.replace(ar,"");if(!n||!(t=J(t)))return n;var r=rn(n),u=rn(t),o=Z(r,u),i=Y(r,u)+1;return X(r,o,i).join("")}function cn(n){return n=n.toString().replace(hr,""),n=n.match(lr)[2].replace(" ",""),n=n?n.split(sr):[],n=n.map(function(n){return on(n.replace(pr,""))})}function fn(n,t){var e={};C(n,function(n,t){function r(t,e){var r=G(u,function(n){return t[n]});r.push(e),n.apply(null,r)}var u;if(Ft(n))u=n.slice(0,-1),n=n[n.length-1],e[t]=u.concat(u.length>0?r:n);else if(1===n.length)e[t]=n;else{if(u=cn(n),0===n.length&&0===u.length)throw new Error("autoInject task functions require explicit parameters.");u.pop(),e[t]=u.concat(r)}}),Me(e,t)}function an(n){setTimeout(n,0)}function ln(n){return u(function(t,e){n(function(){t.apply(null,e)})})}function sn(){this.head=this.tail=null,this.length=0}function pn(n,t){n.length=1,n.head=n.tail=t}function hn(n,t,e){function r(n,t,e){if(null!=e&&"function"!=typeof e)throw new Error("task callback must be a function");if(a.started=!0,Ft(n)||(n=[n]),0===n.length&&a.idle())return dr(function(){a.drain()});for(var r=0,u=n.length;r<u;r++){var o={data:n[r],callback:e||h};t?a._tasks.unshift(o):a._tasks.push(o)}dr(a.process)}function o(n){return u(function(t){i-=1;for(var e=0,r=n.length;e<r;e++){var u=n[e],o=Q(c,u,0);o>=0&&c.splice(o),u.callback.apply(u,t),null!=t[0]&&a.error(t[0],u.data)}i<=a.concurrency-a.buffer&&a.unsaturated(),a.idle()&&a.drain(),a.process()})}if(null==t)t=1;else if(0===t)throw new Error("Concurrency must not be zero");var i=0,c=[],f=!1,a={_tasks:new sn,concurrency:t,payload:e,saturated:h,unsaturated:h,buffer:t/4,empty:h,drain:h,error:h,started:!1,paused:!1,push:function(n,t){r(n,!1,t)},kill:function(){a.drain=h,a._tasks.empty()},unshift:function(n,t){r(n,!0,t)},process:function(){if(!f){for(f=!0;!a.paused&&i<a.concurrency&&a._tasks.length;){var t=[],e=[],r=a._tasks.length;a.payload&&(r=Math.min(r,a.payload));for(var u=0;u<r;u++){var l=a._tasks.shift();t.push(l),e.push(l.data)}0===a._tasks.length&&a.empty(),i+=1,c.push(t[0]),i===a.concurrency&&a.saturated();var s=F(o(t));n(e,s)}f=!1}},length:function(){return a._tasks.length},running:function(){return i},workersList:function(){return c},idle:function(){return a._tasks.length+i===0},pause:function(){a.paused=!0},resume:function(){a.paused!==!1&&(a.paused=!1,dr(a.process))}};return a}function yn(n,t){return hn(n,1,t)}function vn(n,t,e,r){r=y(r||h),gr(n,function(n,r,u){e(t,n,function(n,e){t=e,u(n)})},function(n){r(n,t)})}function dn(n,t,e,r){var u=[];n(t,function(n,t,r){e(n,function(n,t){u=u.concat(t||[]),r(n)})},function(n){r(n,u)})}function mn(n){return function(t,e,r){return n(gr,t,e,r)}}function gn(n,t){return function(e,r,u,o){o=o||h;var i,c=!1;e(r,function(e,r,o){u(e,function(r,u){r?o(r):n(u)&&!i?(c=!0,i=t(!0,e),o(null,Ot)):o()})},function(n){n?o(n):o(null,c?i:t(!1))})}}function bn(n,t){return t}function jn(n){return u(function(t,e){t.apply(null,e.concat(u(function(t,e){"object"==typeof console&&(t?console.error&&console.error(t):console[n]&&D(e,function(t){console[n](t)}))})))})}function Sn(n,t,e){function r(t,r){return t?e(t):r?void n(o):e(null)}e=F(e||h);var o=u(function(n,u){return n?e(n):(u.push(r),void t.apply(this,u))});r(null,!0)}function kn(n,t,e){e=F(e||h);var r=u(function(u,o){return u?e(u):t.apply(this,o)?n(r):void e.apply(null,[null].concat(o))});n(r)}function On(n,t,e){kn(n,function(){return!t.apply(this,arguments)},e)}function wn(n,t,e){function r(t){return t?e(t):void n(u)}function u(n,u){return n?e(n):u?void t(r):e(null)}e=F(e||h),n(u)}function Ln(n){return function(t,e,r){return n(t,r)}}function xn(n,t,e){xe(n,Ln(t),e)}function En(n,t,e,r){I(t)(n,Ln(e),r)}function An(n){return ut(function(t,e){var r=!0;t.push(function(){var n=arguments;r?dr(function(){e.apply(null,n)}):e.apply(null,n)}),n.apply(this,t),r=!1})}function Tn(n){return!n}function Bn(n){return function(t){return null==t?void 0:t[n]}}function Fn(n,t,e,r){var u=new Array(t.length);n(t,function(n,t,r){e(n,function(n,e){u[t]=!!e,r(n)})},function(n){if(n)return r(n);for(var e=[],o=0;o<t.length;o++)u[o]&&e.push(t[o]);r(null,e)})}function In(n,t,e,r){var u=[];n(t,function(n,t,r){e(n,function(e,o){e?r(e):(o&&u.push({index:t,value:n}),r())})},function(n){n?r(n):r(null,G(u.sort(function(n,t){return n.index-t.index}),Bn("value")))})}function _n(n,t,e,r){var u=p(t)?Fn:In;u(n,t,e,r||h)}function Mn(n,t){function e(n){return n?r(n):void u(e)}var r=F(t||h),u=An(n);e()}function Un(n,t,e,r){r=y(r||h);var u={};_(n,t,function(n,t,r){e(n,t,function(n,e){return n?r(n):(u[t]=e,void r())})},function(n){r(n,u)})}function zn(n,t){return t in n}function Pn(n,t){var e=Object.create(null),o=Object.create(null);t=t||r;var i=ut(function(r,i){var c=t.apply(null,r);zn(e,c)?dr(function(){i.apply(null,e[c])}):zn(o,c)?o[c].push(i):(o[c]=[i],n.apply(null,r.concat(u(function(n){e[c]=n;var t=o[c];delete o[c];for(var r=0,u=t.length;r<u;r++)t[r].apply(null,n)}))))});return i.memo=e,i.unmemoized=n,i}function Vn(n,t,e){e=e||h;var r=p(t)?[]:{};n(t,function(n,t,e){n(u(function(n,u){u.length<=1&&(u=u[0]),r[t]=u,e(n)}))},function(n){e(n,r)})}function qn(n,t){Vn(xe,n,t)}function Dn(n,t,e){Vn(I(t),n,e)}function Rn(n,t){if(t=y(t||h),!Ft(n))return t(new TypeError("First argument to race must be an array of functions"));if(!n.length)return t();for(var e=0,r=n.length;e<r;e++)n[e](t)}function Cn(n,t,e,r){var u=Wr.call(n).reverse();vn(u,t,e,r)}function $n(n){return ut(function(t,e){return t.push(u(function(n,t){if(n)e(null,{error:n});else{var r=null;1===t.length?r=t[0]:t.length>1&&(r=t),e(null,{value:r})}})),n.apply(this,t)})}function Wn(n,t,e,r){_n(n,t,function(n,t){e(n,function(n,e){t(n,!e)})},r)}function Nn(n){var t;return Ft(n)?t=G(n,$n):(t={},C(n,function(n,e){t[e]=$n.call(this,n)})),t}function Qn(n){return function(){return n}}function Gn(n,t,e){function r(n,t){if("object"==typeof t)n.times=+t.times||o,n.intervalFunc="function"==typeof t.interval?t.interval:Qn(+t.interval||i),n.errorFilter=t.errorFilter;else{if("number"!=typeof t&&"string"!=typeof t)throw new Error("Invalid arguments for async.retry");n.times=+t||o}}function u(){t(function(n){n&&f++<c.times&&("function"!=typeof c.errorFilter||c.errorFilter(n))?setTimeout(u,c.intervalFunc(f)):e.apply(null,arguments)})}var o=5,i=0,c={times:o,intervalFunc:Qn(i)};if(arguments.length<3&&"function"==typeof n?(e=t||h,t=n):(r(c,n),e=e||h),"function"!=typeof t)throw new Error("Invalid arguments for async.retry");var f=1;u()}function Hn(n,t){Vn(gr,n,t)}function Jn(n,t,e){function r(n,t){var e=n.criteria,r=t.criteria;return e<r?-1:e>r?1:0}Ee(n,function(n,e){t(n,function(t,r){return t?e(t):void e(null,{value:n,criteria:r})})},function(n,t){return n?e(n):void e(null,G(t.sort(r),Bn("value")))})}function Kn(n,t,e){function r(){c||(o.apply(null,arguments),clearTimeout(i))}function u(){var t=n.name||"anonymous",r=new Error('Callback function "'+t+'" timed out.');r.code="ETIMEDOUT",e&&(r.info=e),c=!0,o(r)}var o,i,c=!1;return ut(function(e,c){o=c,i=setTimeout(u,t),n.apply(null,e.concat(r))})}function Xn(n,t,e,r){for(var u=-1,o=Zr(Yr((t-n)/(e||1)),0),i=Array(o);o--;)i[r?o:++u]=n,n+=e;return i}function Yn(n,t,e,r){Te(Xn(0,n,1),t,e,r)}function Zn(n,t,e,r){arguments.length<=3&&(r=e,e=t,t=Ft(n)?[]:{}),r=y(r||h),xe(n,function(n,r,u){e(t,n,r,u)},function(n){r(n,t)})}function nt(n){return function(){return(n.unmemoized||n).apply(null,arguments)}}function tt(n,t,e){if(e=F(e||h),!n())return e(null);var r=u(function(u,o){return u?e(u):n()?t(r):void e.apply(null,[null].concat(o))});t(r)}function et(n,t,e){tt(function(){return!n.apply(this,arguments)},t,e)}var rt=Math.max,ut=function(n){return u(function(t){var e=t.pop();n.call(this,t,e)})},ot="object"==typeof global&&global&&global.Object===Object&&global,it="object"==typeof self&&self&&self.Object===Object&&self,ct=ot||it||Function("return this")(),ft=ct.Symbol,at=Object.prototype,lt=at.hasOwnProperty,st=at.toString,pt=ft?ft.toStringTag:void 0,ht=Object.prototype,yt=ht.toString,vt="[object Null]",dt="[object Undefined]",mt=ft?ft.toStringTag:void 0,gt="[object AsyncFunction]",bt="[object Function]",jt="[object GeneratorFunction]",St="[object Proxy]",kt=9007199254740991,Ot={},wt="function"==typeof Symbol&&Symbol.iterator,Lt=function(n){return wt&&n[wt]&&n[wt]()},xt="[object Arguments]",Et=Object.prototype,At=Et.hasOwnProperty,Tt=Et.propertyIsEnumerable,Bt=m(function(){return arguments}())?m:function(n){return d(n)&&At.call(n,"callee")&&!Tt.call(n,"callee")},Ft=Array.isArray,It="object"==typeof n&&n&&!n.nodeType&&n,_t=It&&"object"==typeof module&&module&&!module.nodeType&&module,Mt=_t&&_t.exports===It,Ut=Mt?ct.Buffer:void 0,zt=Ut?Ut.isBuffer:void 0,Pt=zt||g,Vt=9007199254740991,qt=/^(?:0|[1-9]\d*)$/,Dt="[object Arguments]",Rt="[object Array]",Ct="[object Boolean]",$t="[object Date]",Wt="[object Error]",Nt="[object Function]",Qt="[object Map]",Gt="[object Number]",Ht="[object Object]",Jt="[object RegExp]",Kt="[object Set]",Xt="[object String]",Yt="[object WeakMap]",Zt="[object ArrayBuffer]",ne="[object DataView]",te="[object Float32Array]",ee="[object Float64Array]",re="[object Int8Array]",ue="[object Int16Array]",oe="[object Int32Array]",ie="[object Uint8Array]",ce="[object Uint8ClampedArray]",fe="[object Uint16Array]",ae="[object Uint32Array]",le={};le[te]=le[ee]=le[re]=le[ue]=le[oe]=le[ie]=le[ce]=le[fe]=le[ae]=!0,le[Dt]=le[Rt]=le[Zt]=le[Ct]=le[ne]=le[$t]=le[Wt]=le[Nt]=le[Qt]=le[Gt]=le[Ht]=le[Jt]=le[Kt]=le[Xt]=le[Yt]=!1;var se,pe="object"==typeof n&&n&&!n.nodeType&&n,he=pe&&"object"==typeof module&&module&&!module.nodeType&&module,ye=he&&he.exports===pe,ve=ye&&ot.process,de=function(){try{return ve&&ve.binding("util")}catch(n){}}(),me=de&&de.isTypedArray,ge=me?S(me):j,be=Object.prototype,je=be.hasOwnProperty,Se=Object.prototype,ke=w(Object.keys,Object),Oe=Object.prototype,we=Oe.hasOwnProperty,Le=M(_,1/0),xe=function(n,t,e){var r=p(n)?U:Le;r(n,t,e)},Ee=z(P),Ae=o(Ee),Te=V(P),Be=M(Te,1),Fe=o(Be),Ie=u(function(n,t){return u(function(e){return n.apply(null,t.concat(e))})}),_e=R(),Me=function(n,t,e){function r(n,t){b.push(function(){f(n,t)})}function o(){if(0===b.length&&0===d)return e(null,v);for(;b.length&&d<t;){var n=b.shift();n()}}function i(n,t){var e=g[n];e||(e=g[n]=[]),e.push(t)}function c(n){var t=g[n]||[];D(t,function(n){n()}),o()}function f(n,t){if(!m){var r=F(u(function(t,r){if(d--,r.length<=1&&(r=r[0]),t){var u={};C(v,function(n,t){u[t]=n}),u[n]=r,m=!0,g=Object.create(null),e(t,u)}else v[n]=r,c(n)}));d++;var o=t[t.length-1];t.length>1?o(v,r):o(r)}}function a(){for(var n,t=0;j.length;)n=j.pop(),t++,D(l(n),function(n){0===--S[n]&&j.push(n)});if(t!==p)throw new Error("async.auto cannot execute tasks due to a recursive dependency")}function l(t){var e=[];return C(n,function(n,r){Ft(n)&&Q(n,t,0)>=0&&e.push(r)}),e}"function"==typeof t&&(e=t,t=null),e=y(e||h);var s=x(n),p=s.length;if(!p)return e(null);t||(t=p);var v={},d=0,m=!1,g=Object.create(null),b=[],j=[],S={};C(n,function(t,e){if(!Ft(t))return r(e,[t]),void j.push(e);var u=t.slice(0,t.length-1),o=u.length;return 0===o?(r(e,t),void j.push(e)):(S[e]=o,void D(u,function(c){if(!n[c])throw new Error("async.auto task `"+e+"` has a non-existent dependency `"+c+"` in "+u.join(", "));i(c,function(){o--,0===o&&r(e,t)})}))}),a(),o()},Ue="[object Symbol]",ze=1/0,Pe=ft?ft.prototype:void 0,Ve=Pe?Pe.toString:void 0,qe="\\ud800-\\udfff",De="\\u0300-\\u036f\\ufe20-\\ufe23",Re="\\u20d0-\\u20f0",Ce="\\ufe0e\\ufe0f",$e="\\u200d",We=RegExp("["+$e+qe+De+Re+Ce+"]"),Ne="\\ud800-\\udfff",Qe="\\u0300-\\u036f\\ufe20-\\ufe23",Ge="\\u20d0-\\u20f0",He="\\ufe0e\\ufe0f",Je="["+Ne+"]",Ke="["+Qe+Ge+"]",Xe="\\ud83c[\\udffb-\\udfff]",Ye="(?:"+Ke+"|"+Xe+")",Ze="[^"+Ne+"]",nr="(?:\\ud83c[\\udde6-\\uddff]){2}",tr="[\\ud800-\\udbff][\\udc00-\\udfff]",er="\\u200d",rr=Ye+"?",ur="["+He+"]?",or="(?:"+er+"(?:"+[Ze,nr,tr].join("|")+")"+ur+rr+")*",ir=ur+rr+or,cr="(?:"+[Ze+Ke+"?",Ke,nr,tr,Je].join("|")+")",fr=RegExp(Xe+"(?="+Xe+")|"+cr+ir,"g"),ar=/^\s+|\s+$/g,lr=/^(function)?\s*[^\(]*\(\s*([^\)]*)\)/m,sr=/,/,pr=/(=.+)?(\s*)$/,hr=/((\/\/.*$)|(\/\*[\s\S]*?\*\/))/gm,yr="function"==typeof setImmediate&&setImmediate,vr="object"==typeof process&&"function"==typeof process.nextTick;se=yr?setImmediate:vr?process.nextTick:an;var dr=ln(se);sn.prototype.removeLink=function(n){return n.prev?n.prev.next=n.next:this.head=n.next,n.next?n.next.prev=n.prev:this.tail=n.prev,n.prev=n.next=null,this.length-=1,n},sn.prototype.empty=sn,sn.prototype.insertAfter=function(n,t){t.prev=n,t.next=n.next,n.next?n.next.prev=t:this.tail=t,n.next=t,this.length+=1},sn.prototype.insertBefore=function(n,t){t.prev=n.prev,t.next=n,n.prev?n.prev.next=t:this.head=t,n.prev=t,this.length+=1},sn.prototype.unshift=function(n){this.head?this.insertBefore(this.head,n):pn(this,n)},sn.prototype.push=function(n){this.tail?this.insertAfter(this.tail,n):pn(this,n)},sn.prototype.shift=function(){return this.head&&this.removeLink(this.head)},sn.prototype.pop=function(){return this.tail&&this.removeLink(this.tail)};var mr,gr=M(_,1),br=u(function(n){return u(function(t){var e=this,r=t[t.length-1];"function"==typeof r?t.pop():r=h,vn(n,t,function(n,t,r){t.apply(e,n.concat(u(function(n,t){r(n,t)})))},function(n,t){r.apply(e,[n].concat(t))})})}),jr=u(function(n){return br.apply(null,n.reverse())}),Sr=z(dn),kr=mn(dn),Or=u(function(n){var t=[null].concat(n);return ut(function(n,e){return e.apply(this,t)})}),wr=z(gn(r,bn)),Lr=V(gn(r,bn)),xr=M(Lr,1),Er=jn("dir"),Ar=M(En,1),Tr=z(gn(Tn,Tn)),Br=V(gn(Tn,Tn)),Fr=M(Br,1),Ir=z(_n),_r=V(_n),Mr=M(_r,1),Ur=function(n,t,e,r){r=r||h,Te(n,t,function(n,t){e(n,function(e,r){return e?t(e):t(null,{key:r,val:n})})},function(n,t){for(var e={},u=Object.prototype.hasOwnProperty,o=0;o<t.length;o++)if(t[o]){var i=t[o].key,c=t[o].val;u.call(e,i)?e[i].push(c):e[i]=[c]}return r(n,e)})},zr=M(Ur,1/0),Pr=M(Ur,1),Vr=jn("log"),qr=M(Un,1/0),Dr=M(Un,1);mr=vr?process.nextTick:yr?setImmediate:an;var Rr=ln(mr),Cr=function(n,t){return hn(function(t,e){n(t[0],e)},t,1)},$r=function(n,t){var e=Cr(n,t);return e.push=function(n,t,r){if(null==r&&(r=h),"function"!=typeof r)throw new Error("task callback must be a function");if(e.started=!0,Ft(n)||(n=[n]),0===n.length)return dr(function(){e.drain()});t=t||0;for(var u=e._tasks.head;u&&t>=u.priority;)u=u.next;for(var o=0,i=n.length;o<i;o++){var c={data:n[o],priority:t,callback:r};u?e._tasks.insertBefore(u,c):e._tasks.push(c)}dr(e.process)},delete e.unshift,e},Wr=Array.prototype.slice,Nr=z(Wn),Qr=V(Wn),Gr=M(Qr,1),Hr=function(n,t){return t||(t=n,n=null),ut(function(e,r){function u(n){t.apply(null,e.concat(n))}n?Gn(n,u,r):Gn(u,r)})},Jr=z(gn(Boolean,r)),Kr=V(gn(Boolean,r)),Xr=M(Kr,1),Yr=Math.ceil,Zr=Math.max,nu=M(Yn,1/0),tu=M(Yn,1),eu=function(n,t){function e(o){if(r===n.length)return t.apply(null,[null].concat(o));var i=F(u(function(n,r){return n?t.apply(null,[n].concat(r)):void e(r)}));o.push(i);var c=n[r++];c.apply(null,o)}if(t=y(t||h),!Ft(n))return t(new Error("First argument to waterfall must be an array of functions"));if(!n.length)return t();var r=0;e([])},ru={applyEach:Ae,applyEachSeries:Fe,apply:Ie,asyncify:q,auto:Me,autoInject:fn,cargo:yn,compose:jr,concat:Sr,concatSeries:kr,constant:Or,detect:wr,detectLimit:Lr,detectSeries:xr,dir:Er,doDuring:Sn,doUntil:On,doWhilst:kn,during:wn,each:xn,eachLimit:En,eachOf:xe,eachOfLimit:_,eachOfSeries:gr,eachSeries:Ar,ensureAsync:An,every:Tr,everyLimit:Br,everySeries:Fr,filter:Ir,filterLimit:_r,filterSeries:Mr,forever:Mn,groupBy:zr,groupByLimit:Ur,groupBySeries:Pr,log:Vr,map:Ee,mapLimit:Te,mapSeries:Be,mapValues:qr,mapValuesLimit:Un,mapValuesSeries:Dr,memoize:Pn,nextTick:Rr,parallel:qn,parallelLimit:Dn,priorityQueue:$r,queue:Cr,race:Rn,reduce:vn,reduceRight:Cn,reflect:$n,reflectAll:Nn,reject:Nr,rejectLimit:Qr,rejectSeries:Gr,retry:Gn,retryable:Hr,seq:br,series:Hn,setImmediate:dr,some:Jr,someLimit:Kr,someSeries:Xr,sortBy:Jn,timeout:Kn,times:nu,timesLimit:Yn,timesSeries:tu,transform:Zn,unmemoize:nt,until:et,waterfall:eu,whilst:tt,all:Tr,any:Jr,forEach:xn,forEachSeries:Ar,forEachLimit:En,forEachOf:xe,forEachOfSeries:gr,forEachOfLimit:_,inject:vn,foldl:vn,foldr:Cn,select:Ir,selectLimit:_r,selectSeries:Mr,wrapSync:q};n.default=ru,n.applyEach=Ae,n.applyEachSeries=Fe,n.apply=Ie,n.asyncify=q,n.auto=Me,n.autoInject=fn,n.cargo=yn,n.compose=jr,n.concat=Sr,n.concatSeries=kr,n.constant=Or,n.detect=wr,n.detectLimit=Lr,n.detectSeries=xr,n.dir=Er,n.doDuring=Sn,n.doUntil=On,n.doWhilst=kn,n.during=wn,n.each=xn,n.eachLimit=En,n.eachOf=xe,n.eachOfLimit=_,n.eachOfSeries=gr,n.eachSeries=Ar,n.ensureAsync=An,n.every=Tr,n.everyLimit=Br,n.everySeries=Fr,n.filter=Ir,n.filterLimit=_r,n.filterSeries=Mr,n.forever=Mn,n.groupBy=zr,n.groupByLimit=Ur,n.groupBySeries=Pr,n.log=Vr,n.map=Ee,n.mapLimit=Te,n.mapSeries=Be,n.mapValues=qr,n.mapValuesLimit=Un,n.mapValuesSeries=Dr,n.memoize=Pn,n.nextTick=Rr,n.parallel=qn,n.parallelLimit=Dn,n.priorityQueue=$r,n.queue=Cr,n.race=Rn,n.reduce=vn,n.reduceRight=Cn,n.reflect=$n,n.reflectAll=Nn,n.reject=Nr,n.rejectLimit=Qr,n.rejectSeries=Gr,n.retry=Gn,n.retryable=Hr,n.seq=br,n.series=Hn,n.setImmediate=dr,n.some=Jr,n.someLimit=Kr,n.someSeries=Xr,n.sortBy=Jn,n.timeout=Kn,n.times=nu,n.timesLimit=Yn,n.timesSeries=tu,n.transform=Zn,n.unmemoize=nt,n.until=et,n.waterfall=eu,n.whilst=tt,n.all=Tr,n.allLimit=Br,n.allSeries=Fr,n.any=Jr,n.anyLimit=Kr,n.anySeries=Xr,n.find=wr,n.findLimit=Lr,n.findSeries=xr,n.forEach=xn,n.forEachSeries=Ar,n.forEachLimit=En,n.forEachOf=xe,n.forEachOfSeries=gr,n.forEachOfLimit=_,n.inject=vn,n.foldl=vn,n.foldr=Cn,n.select=Ir,n.selectLimit=_r,n.selectSeries=Mr,n.wrapSync=q,Object.defineProperty(n,"__esModule",{value:!0})});
 //# sourceMappingURL=async.min.map
 /**
  * bootbox.js v4.4.0
@@ -1420,43 +1420,44 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
     run.$inject = ['$rootScope', '$state', '$auth', 'bootstrap3ElementModifier', 'ngProgressLite', 'AuthService', 'BreadCrumbService', '$location', '$window', '$templateCache'];
     /* @ngInject */
     function run($rootScope, $state, $auth, bootstrap3ElementModifier, ngProgressLite, AuthService, BreadCrumbService, $location, $window, $templateCache) {
-        //bootstrap3ElementModifier.enableValidationStateIcons(true);
 
-        //$templateCache.get('app/login/login.html');
-
-        //Force redirect to https protocol
-        var forceSSL = function(event) {
-            if ($location.protocol() !== 'https') {
-                event.preventDefault();
-                $window.location.href = $location.absUrl().replace('http', 'https');
-                return false;
-            }
-        };
-
-        //$log.log(!$rootScope.authenticated);
+        var forceSSL = forceSSL;
         var curr_state_name = $state.current.name;
+
+        //Listens for unpermitted access to admin pages.
+        $rootScope.$on('nonvendoraccess', function(event) {
+            event.preventDefault();
+            $rootScope.loginError = "You are not authorized to access vendor pages.";
+            AuthService.removeUserStorage();
+
+            $state.go('auth');
+            ngProgressLite.done();
+            return false;
+
+        });
 
         $rootScope.$on('unauthorized', function(event) {
 
             event.preventDefault();
             $rootScope.loginError = "Your session has expired. Please login again.";
             AuthService.removeUserStorage();
-            //AuthService.destroyAuthUser().then(function() {
-            //if (toState.name !== "auth") {
+
             $state.go('auth');
             ngProgressLite.done();
             return false;
-            //}
-            //});
+
         });
 
         $rootScope.$on('$stateChangeStart', function(event, toState) {
-            // if (toState.name != 'auth') {
-            //     event.preventDefault();
-            // }
 
-            //$log.log(toState.name);
-            forceSSL(event);
+            redirectIfNotVendor(event);
+
+            var __page_url = $location.absUrl();
+            var __is_local = ((__page_url.indexOf('localhost') > -1) ||
+                (__page_url.indexOf('127.0.0.1') > -1));
+            if (!__is_local)
+                forceSSL(event);
+
             BreadCrumbService.set(toState.name);
             $rootScope.crumbs = BreadCrumbService.getCrumbs();
 
@@ -1498,6 +1499,31 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
         $rootScope.$on('$stateChangeError', function(event, toState) {
             ngProgressLite.done();
         });
+
+        /////////Methods Definitions///////////
+
+        //Force redirect to https protocol
+        function forceSSL(event) {
+            if ($location.protocol() !== 'https') {
+                event.preventDefault();
+                $window.location.href = $location.absUrl().replace('http', 'https');
+                return false;
+            }
+        };
+
+        //Forces user to logout if not vendor
+        function redirectIfNotVendor(event) {
+
+            if (angular.isDefined($rootScope.currentUser) && !$rootScope.currentUser.is_vendor) {
+                event.preventDefault();
+                $rootScope.loginError = "You are not authorized to access vendor pages.";
+                AuthService.removeUserStorage();
+
+                $state.go('auth');
+                ngProgressLite.done();
+                return false;
+            }
+        }
     }
 })();
 (function() {
@@ -1557,7 +1583,7 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
                     controllerAs: "vm",
                     resolve: {
                         styleSheets: dashboardStyleSheets,
-                        userPrepService: userPrepService
+                        //userPrepService: userPrepService
                     }
                 },
                 //"nav": nav
@@ -1784,19 +1810,19 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
         $stateProvider
             .state(auth)
             .state(logout)
-            .state(dashboard)
-            .state(deal)
-            .state(dealAdd)
-            .state(dealEdit)
-            .state(dealView)
-            .state(brand)
-            .state(brandAdd)
-            .state(brandEdit)
-            .state(brandView)
-            .state(user)
-            .state(userAdd)
-            .state(userEdit)
-            .state(userView);
+            .state(dashboard);
+        // .state(deal)
+        // .state(dealAdd)
+        // .state(dealEdit)
+        // .state(dealView)
+        // .state(brand)
+        // .state(brandAdd)
+        // .state(brandEdit)
+        // .state(brandView)
+        // .state(user)
+        // .state(userAdd)
+        // .state(userEdit)
+        // .state(userView);
 
         ////////////
 
@@ -1951,7 +1977,7 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
             //console.log(localStorage.getItem("content-type"));
             //console.log(config.headers["content-type"]);
             //config.headers = headers;
-            config.timeout = canceller.promise;
+            //config.timeout = canceller.promise;
 
             return config;
             /*
@@ -1985,6 +2011,12 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
                 $rootScope.$broadcast('unauthorized');
 
                 canceller.resolve('Unauthorized');
+                //return rejection;
+            } else
+            if (rejection.status === 422 && angular.isDefined($rootScope.currentUser) && !$rootScope.currentUser.is_vendor) {
+                $rootScope.$broadcast('nonvendoraccess');
+                rejection.config.timeout = canceller.promise;
+                canceller.resolve('No permission to access resource.');
                 //return rejection;
             }
 
@@ -4773,32 +4805,6 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
     'use strict';
 
     angular.module('app.deals')
-        .factory('TemplateService', TemplateService);
-
-    TemplateService.$inject = ['$scope'];
-
-    /* @ngInject */
-    function TemplateService($scope) {
-
-        var service = {
-            lists: [],
-            setList: setList
-        }
-
-        return service;
-
-        //////// SERIVCE METHODS ////////
-
-        function setList(list) {
-            service.lists = list;
-        }
-    }
-
-})();
-(function() {
-    'use strict';
-
-    angular.module('app.deals')
         .controller('DealAddController', DealAddController);
 
     DealAddController.$inject = ['DealService', '$scope', 'HelperService', '$state', 'brandPrepService', 'prepTemplateNames', 'prepTemplateTypes'];
@@ -6091,6 +6097,32 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
 (function() {
     'use strict';
 
+    angular.module('app.deals')
+        .factory('TemplateService', TemplateService);
+
+    TemplateService.$inject = ['$scope'];
+
+    /* @ngInject */
+    function TemplateService($scope) {
+
+        var service = {
+            lists: [],
+            setList: setList
+        }
+
+        return service;
+
+        //////// SERIVCE METHODS ////////
+
+        function setList(list) {
+            service.lists = list;
+        }
+    }
+
+})();
+(function() {
+    'use strict';
+
     angular
         .module('app.deals.image', [])
         .directive('addImage', addImage);
@@ -6255,6 +6287,39 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
     }
 
 })();
+// (function() {
+//     'use strict';
+
+//     angular.module('app.deals')
+//         .controller('HighlightController', HighlightController);
+
+//     HighlightController.$inject = ['$scope', '$compile'];
+
+//     /* @ngInject */
+//     function HighlightController($scope, $compile) {
+//         var hl = this;
+
+//         //hl.remove = remove;
+//         hl.counter = 0;
+//         hl.increCounter = increCounter;
+//         hl.modelo = {};
+//         hl.we = 'test';
+//         //hl.form = $scope.$parent.$parent.vm.form;
+
+//         //////////////
+
+//         // function remove(target, highlight) {
+//         //     var parent = $(target).parent();
+//         //     console.log($scope);
+//         //     //$parent.$parent.vm.removeHighlight(highlight);
+//         //     parent.remove();
+//         // }
+
+//         function increCounter() {
+//             hl.counter++;
+//         }
+//     }
+// })();
 (function() {
     'use strict';
 
@@ -6390,39 +6455,6 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
     }
 
 })();
-// (function() {
-//     'use strict';
-
-//     angular.module('app.deals')
-//         .controller('HighlightController', HighlightController);
-
-//     HighlightController.$inject = ['$scope', '$compile'];
-
-//     /* @ngInject */
-//     function HighlightController($scope, $compile) {
-//         var hl = this;
-
-//         //hl.remove = remove;
-//         hl.counter = 0;
-//         hl.increCounter = increCounter;
-//         hl.modelo = {};
-//         hl.we = 'test';
-//         //hl.form = $scope.$parent.$parent.vm.form;
-
-//         //////////////
-
-//         // function remove(target, highlight) {
-//         //     var parent = $(target).parent();
-//         //     console.log($scope);
-//         //     //$parent.$parent.vm.removeHighlight(highlight);
-//         //     parent.remove();
-//         // }
-
-//         function increCounter() {
-//             hl.counter++;
-//         }
-//     }
-// })();
 // (function() {
 //     'use strict';
 
@@ -7737,74 +7769,6 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
 (function() {
     'use strict';
 
-    angular
-        .module('app.users')
-        .filter('isYesNo', isYesNo);
-
-    function isYesNo() {
-        return function(input) {
-            if (input) {
-                return 'Yes';
-            }
-
-            return 'No';
-        }
-
-    }
-
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.users')
-        .filter('isSuperAdmin', isSuperAdmin);
-
-    function isSuperAdmin() {
-        return function(user) {
-            if (user) {
-                if (user.email == 'admin@example.com') {
-                    return true;
-                }
-
-            }
-
-            return false;
-        }
-
-    }
-
-})();
-(function() {
-    'use strict';
-
-    angular
-        .module('app.users')
-        .filter('isRole', isRole);
-
-    function isRole() {
-        return function(user) {
-            if (user) {
-                if (user.is_admin) {
-                    return 'Admin';
-                }
-                if (user.is_vendor) {
-                    return 'Vendor';
-                }
-                if (user.is_customer) {
-                    return 'Customer';
-                }
-            }
-
-            return 'No Role';
-        }
-
-    }
-
-})();
-(function() {
-    'use strict';
-
     angular.module('app.users')
         .controller('UserAddController', UserAddController);
 
@@ -8063,4 +8027,72 @@ var duScrollDefaultEasing=function(e){"use strict";return.5>e?Math.pow(2*e,2)/2:
             });
         }
     }
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.users')
+        .filter('isYesNo', isYesNo);
+
+    function isYesNo() {
+        return function(input) {
+            if (input) {
+                return 'Yes';
+            }
+
+            return 'No';
+        }
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.users')
+        .filter('isSuperAdmin', isSuperAdmin);
+
+    function isSuperAdmin() {
+        return function(user) {
+            if (user) {
+                if (user.email == 'admin@example.com') {
+                    return true;
+                }
+
+            }
+
+            return false;
+        }
+
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('app.users')
+        .filter('isRole', isRole);
+
+    function isRole() {
+        return function(user) {
+            if (user) {
+                if (user.is_admin) {
+                    return 'Admin';
+                }
+                if (user.is_vendor) {
+                    return 'Vendor';
+                }
+                if (user.is_customer) {
+                    return 'Customer';
+                }
+            }
+
+            return 'No Role';
+        }
+
+    }
+
 })();
